@@ -1,0 +1,308 @@
+/* Общие стили */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  min-width: 1200px;
+  font-family: 'font', sans-serif;
+  background: #E5E5E5;
+}
+
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+
+/* Сброс и установка стилей  для некоторых классов */
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn-reset {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 70px;
+}
+
+.title {
+  padding-left: 40px;
+  padding-bottom: 25px;
+}
+
+/* header */
+
+.header {
+  padding: 30px 0;
+  margin-bottom: 40px;
+}
+
+.header-logo {
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-link-sign {
+  margin-left: auto;
+  min-width: 120px;
+}
+
+.header-link-logo {
+  margin-right: 40px;
+}
+
+.header-nav-list {
+  align-items: center;
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+}
+
+.header-nav-item:not(:last-child) {
+  margin-left: 45px;
+}
+
+.header-nav-item:last-child {
+  margin-left: auto;
+}
+
+.header-button {
+  justify-content: space-evenly;
+  width: 450px;
+  min-height: 50px;
+  border-left: 1px solid rgba(204, 153, 51, 1);
+}
+
+.header-btn {
+  border: 1px solid rgba(204, 153, 51, 1);
+  border-radius: 10px;
+  min-height: 42px;
+}
+
+.header-btn-1 {
+  min-width: 120px;
+}
+
+.header-btn-2 {
+  min-width: 190px;
+}
+
+
+/* Спецпредложения */
+
+.offers-list {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.offers-item {
+  width: 572px;
+}
+
+.offers-item-article {
+  width: 100%;
+  min-height: 258px;
+  padding: 40px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.offers-item-article-small-1 {
+  margin-bottom: 23px;
+}
+
+/* .offers-item-article-small-2 {
+  background-color: crimson;
+} */
+
+.offers-item-article-large {
+  height: 100%;
+  padding-top: 211px;
+}
+
+.offers-item-title {
+  padding-bottom: 15px;
+}
+
+.offers-item-text {
+  padding-bottom: 47px;
+}
+
+/*О нас*/
+
+.about-text {
+  width: 888px;
+  min-height: 80px;
+  text-align: justify;
+}
+
+/*Услуги*/
+
+.services-list  {
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.services-item{
+  width: 573px;
+  min-height: 165px;
+  padding: 26px 126px 0 45px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.services-item:first-child {
+  margin: 0 23px 23px 0;
+}
+
+.services-item:nth-child(2) {
+  margin-bottom: 23px;
+}
+
+.services-item:nth-child(3) {
+  margin-right: 23px;
+}
+
+/*Преимущества*/
+
+.advant-list {
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.advant-item{
+  width: 275px;
+  min-height: 275px;
+  padding: 45px 42px 0 45px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.advant-item:nth-child(-n+3) {
+  margin: 0 23px 23px 0;
+}
+
+.advant-item:nth-child(4) {
+  margin-bottom: 23px;
+}
+
+.advant-item:nth-child(n+5):nth-child(-n+7) {
+  margin-right: 23px;
+}
+
+.advant-item-icon {
+  padding-bottom: 10px;
+}
+
+/*Размещение*/
+
+.place-list {
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.place-item {
+  width: 374px;
+  min-height: 440px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.place-item:nth-child(-n+2),
+.place-item:nth-child(4),
+.place-item:nth-child(5) {
+  margin: 0 23px 23px 0;
+}
+
+.place-item:nth-child(3),
+.place-item:nth-child(6) {
+  margin-bottom: 23px;
+}
+
+.place-item:nth-child(7),
+.place-item:nth-child(8) {
+  margin-right: 23px;
+}
+
+.place-item-image {
+  margin-bottom: 36px;
+}
+
+.place-item-box {
+  margin-left: 45px;
+}
+
+.box-price {
+  justify-content: space-between;
+  padding-right: 46px;
+  padding-bottom: 16px;
+}
+
+.place-item-box-title {
+  padding-bottom: 16px;
+}
+
+.place-item-box-text {
+  padding-bottom: 20px;
+}
+
+.place-item-link  {
+  width: 100px;
+  min-height: 42px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(204, 153, 51, 1);
+  border-radius: 10px;
+}
+
+.place-item-box-link {
+  padding: 10px 20px;
+}
+
+.place-item {
+  position: relative;
+}
+
+.place-item-variants {
+  position: absolute;
+  margin: 0;
+  bottom: 27px;
+  left: 54px;
+}
