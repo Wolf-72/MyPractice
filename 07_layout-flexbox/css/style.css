@@ -188,16 +188,12 @@ p {
   background-color: rgba(255, 255, 255, 1);
 }
 
-.services-item:first-child {
+.services-item:nth-child(odd) {
   margin: 0 23px 23px 0;
 }
 
-.services-item:nth-child(2) {
+.services-item:nth-child(even) {
   margin-bottom: 23px;
-}
-
-.services-item:nth-child(3) {
-  margin-right: 23px;
 }
 
 /*Преимущества*/
@@ -215,16 +211,13 @@ p {
   background-color: rgba(255, 255, 255, 1);
 }
 
-.advant-item:nth-child(-n+3) {
+.advant-item:nth-child(odd),
+.advant-item:nth-child(even) {
   margin: 0 23px 23px 0;
 }
 
-.advant-item:nth-child(4) {
-  margin-bottom: 23px;
-}
-
-.advant-item:nth-child(n+5):nth-child(-n+7) {
-  margin-right: 23px;
+.advant-item:nth-child(4n) {
+  margin: 0 0 23px 0;
 }
 
 .advant-item-icon {
@@ -245,20 +238,13 @@ p {
   background-color: rgba(255, 255, 255, 1);
 }
 
-.place-item:nth-child(-n+2),
-.place-item:nth-child(4),
-.place-item:nth-child(5) {
+.place-item:nth-child(odd),
+.place-item:nth-child(even) {
   margin: 0 23px 23px 0;
 }
 
-.place-item:nth-child(3),
-.place-item:nth-child(6) {
-  margin-bottom: 23px;
-}
-
-.place-item:nth-child(7),
-.place-item:nth-child(8) {
-  margin-right: 23px;
+.place-item:nth-child(3n) {
+  margin: 0 0 23px 0;
 }
 
 .place-item-image {
@@ -280,20 +266,15 @@ p {
 }
 
 .place-item-box-text {
-  padding-bottom: 20px;
-}
-
-.place-item-link  {
-  width: 100px;
-  min-height: 42px;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgba(204, 153, 51, 1);
-  border-radius: 10px;
+  margin-bottom: 33px;
 }
 
 .place-item-box-link {
+  min-width: 100px;
+  min-height: 42px;
   padding: 10px 20px;
+  border: 1px solid rgba(204, 153, 51, 1);
+  border-radius: 10px;
 }
 
 .place-item {
