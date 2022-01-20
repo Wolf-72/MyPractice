@@ -24,45 +24,42 @@ img {
   src: local("Muller-Regular"),
     url("../fons/MullerRegular.woff2") format("woff2"),
     url("../fons/MullerRegular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Muller";
-  src: local("Muller-Light"),
-    url("../fons/MullerLight.woff2") format("woff2"),
+  src: local("Muller-Light"), url("../fons/MullerLight.woff2") format("woff2"),
     url("../fons/MullerLight.woff") format("woff");
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Muller";
-  src: local("Muller-Medium"),
-    url("../fons/MullerMedium.woff2") format("woff2"),
+  src: local("Muller-Medium"), url("../fons/MullerMedium.woff2") format("woff2"),
     url("../fons/MullerMedium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Muller";
-  src: local("Muller-Bold"),
-    url("../fons/MullerBold.woff2") format("woff2"),
+  src: local("Muller-Bold"), url("../fons/MullerBold.woff2") format("woff2"),
     url("../fons/MullerBold.woff") format("woff");
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
   min-width: 1200px;
   font-family: "Muller", sans-serif;
-  background: #E5E5E5;
+  background: #e5e5e5;
 }
 
 h2,
@@ -70,7 +67,6 @@ h3,
 p {
   margin: 0;
 }
-
 
 /* Сброс и установка стилей  для некоторых классов */
 
@@ -127,7 +123,7 @@ p {
   min-width: 126px;
   font-size: 16px;
   line-height: 16px;
-  color: #CC9933;
+  color: #cc9933;
   background-image: url("../img/sign.svg");
   background-repeat: no-repeat;
   padding-left: 25px;
@@ -148,7 +144,7 @@ p {
 .header-nav-list {
   align-items: center;
   padding: 10px 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 15px;
 }
 
@@ -170,14 +166,14 @@ p {
   justify-content: space-evenly;
   width: 450px;
   min-height: 50px;
-  border-left: 1px solid rgba(204, 153, 51, 1);
+  border-left: 1px solid #e1e1e1;
 }
 
 .header-btn {
   font-size: 16px;
   line-height: 16px;
-  color: #CC9933;
-  border: 1px solid  #CC9933;
+  color: #cc9933;
+  border: 1px solid #cc9933;
   border-radius: 15px;
   min-height: 42px;
 }
@@ -189,7 +185,6 @@ p {
 .header-btn-2 {
   min-width: 190px;
 }
-
 
 /* Спецпредложения */
 
@@ -224,7 +219,9 @@ p {
 
 .offers-item-article-large {
   height: 100%;
-  padding-top: 211px;
+  /* padding-top: 211px; */
+  flex-direction: column;
+  justify-content: end;
   background-image: url("../img/lux.jpg");
 }
 
@@ -233,7 +230,7 @@ p {
   font-weight: 700;
   font-size: 40px;
   line-height: 40px;
-  color: #FFFFFF;
+  color: #ffffff;
   max-width: 300px;
 }
 
@@ -247,7 +244,7 @@ p {
   font-weight: 400;
   font-size: 20px;
   line-height: 20px;
-  color: #FFFFFF;
+  color: #ffffff;
   opacity: 0.8; /*Прозрачность цвета*/
 }
 
@@ -261,10 +258,14 @@ p {
   font-weight: 400;
   font-size: 16px;
   line-height: 16px;
-  color: #FFCC66;
+  color: #ffcc66;
   background-repeat: no-repeat;
   background-position: right;
   background-image: url("../img/Rectangle-fone.png");
+}
+
+.offers-item-link-large {
+  width: 103px;
 }
 
 /*О нас*/
@@ -279,7 +280,7 @@ p {
 
 /*Услуги*/
 
-.services-list  {
+.services-list {
   flex-wrap: wrap;
   justify-content: flex-start; /*Это св-во по умолчанию, его можно вообще не указывать*/
 }
@@ -299,7 +300,7 @@ p {
   background-image: url("../img/exclusive.jpg");
 }
 
-.services-item-2  {
+.services-item-2 {
   background-image: url("../img/banquet.jpg");
 }
 
@@ -324,7 +325,7 @@ p {
   font-weight: 500;
   font-size: 20px;
   line-height: 200%;
-  color: #CC9933;
+  color: #cc9933;
   background-repeat: no-repeat;
   background-position: right;
   background-image: url("../img/Rectangle-fone.png");
@@ -342,7 +343,7 @@ p {
   flex-wrap: wrap;
 }
 
-.advant-item{
+.advant-item {
   width: 275px;
   min-height: 275px;
   padding: 45px 42px 0 45px;
@@ -364,10 +365,10 @@ p {
 }
 
 .advant-item-text {
+  padding-bottom: 32px;
   font-size: 16px;
   line-height: 200%;
   color: #000000;
-
 }
 
 /*Размещение*/
@@ -440,11 +441,11 @@ p {
 .place-item-box-link {
   font-size: 16px;
   line-height: 16px;
-  color: #CC9933;
+  color: #cc9933;
   min-width: 100px;
   min-height: 42px;
   padding: 10px 20px;
-  border: 1px solid #CC9933;
+  border: 1px solid #cc9933;
   border-radius: 10px;
 }
 
@@ -464,7 +465,7 @@ p {
   padding-right: 15px;
   font-size: 20px;
   line-height: 200%;
-  color: #FFFFFF;
+  color: #ffffff;
   background-repeat: no-repeat;
   background-position: right;
   background-image: url("../img/Rectangle 2.png");
