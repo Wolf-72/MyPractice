@@ -560,6 +560,10 @@ p {
   width: 40%;
 }
 
+.contacts-table {
+  border-collapse: collapse;
+}
+
 .col-1 {
   width: 150px;
   padding-top: 23px;
@@ -606,11 +610,12 @@ p {
 
 .contacts-table-button {
   text-align: start;
-  padding-top: 44px;
+  padding-top: 72px;
+  margin-bottom: 30px;
 }
 
 .table-btn {
-  padding: 23px 30px;
+  padding: 30px;
   font-weight: 700;
   font-size: 16px;
   line-height: 16px;
@@ -643,7 +648,7 @@ p {
 .footer-text-white {
   font-size: 16px;
   line-height: 190%;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .footer-text-white-left {
@@ -653,7 +658,7 @@ p {
 .footer-text-yellow {
   font-size: 16px;
   line-height: 150%;
-  color: #CC9933;
+  color: #cc9933;
 }
 
 .footer-text-yellow-left {
@@ -691,8 +696,6 @@ p {
 .footer-item {
   width: 25px;
   height: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-top: 10px;
 }
-
-
