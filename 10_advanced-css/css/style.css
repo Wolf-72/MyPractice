@@ -57,13 +57,13 @@ img {
 }
 
 :root {
-	--main-link-color: #cc9933;
-	--light-link-color: #E9C479;
-	--dark-link-color:  #A47312;
+  --main-link-color: #cc9933;
+  --light-link-color: #e9c479;
+  --dark-link-color: #a47312;
   --main-text-color: #333333;
   --light-text-color: #666666;
   --lighter-text-color: #999999;
-	--dark-text-color:  #000000;
+  --dark-text-color: #000000;
 }
 
 body {
@@ -187,27 +187,29 @@ p {
 }
 
 .header-nav-right {
-  text-align: center;
-  padding-top: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 7px 0 7px 0;
   width: 430px;
   min-height: 50px;
   border-left: 1px solid #e1e1e1;
 }
 
 .head-link-right {
-  padding: 10px 20px;
+  padding: 12px 20px 8px 20px;
   font-size: 16px;
   line-height: 16px;
   color: var(--main-link-color);
   border: 1px solid var(--main-link-color);
   border-radius: 10px;
   min-height: 42px;
-  transition: background, color 0.2s linear;
+  transition-property: background, color;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
 }
 
 .head-link-right-1 {
   min-width: 107px;
-  margin-right: 40px;
 }
 
 .head-link-right-2 {
@@ -242,10 +244,15 @@ p {
 
 .offers-item-article-small-1 {
   background-image: url("../img/darken-1.png"), url("../img/maldiv.jpg");
-}
+} /*Этот вариант замедляет загрузку, лучше использовать linear-gradient*/
 
 .offers-item-article-small-2 {
-  background-image: url("../img/darken-2.png"), url("../img/Crit.jpg");
+  background-image: linear-gradient(
+      to right,
+      rgba(48, 64, 89, 0.84),
+      rgba(48, 64, 89, 0)
+    ),
+    url("../img/Crit.jpg");
 }
 
 .offers-item-article-large {
@@ -259,7 +266,12 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../img/darken-3.png"), url("../img/lux.jpg");
+  background-image: linear-gradient(
+      to top,
+      rgba(48, 64, 89, 0.84),
+      rgba(48, 64, 89, 0)
+    ),
+    url("../img/lux.jpg");
 }
 
 .offers-item-title {
@@ -364,7 +376,9 @@ p {
   line-height: 200%;
   color: var(--main-link-color);
   position: relative;
-  transition: padding, color 0.2s linear;
+  transition-property: padding, color; /*если свойств несколько, всё указывается раздельно*/
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
 }
 
 .services-item-link-icon {
@@ -485,12 +499,13 @@ p {
 }
 
 .place-item-box-link {
+  display: inline-block;
   font-size: 16px;
   line-height: 16px;
   color: var(--main-link-color);
   min-width: 100px;
   min-height: 42px;
-  padding: 10px 20px;
+  padding: 12px 20px 8px 20px;
   border: 1px solid var(--main-link-color);
   border-radius: 10px;
   transition: background, color 0.2s linear;
@@ -501,17 +516,27 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: linear-gradient(to top, rgba(48, 64, 89, 0.84), rgba(48, 64, 89, 0)), url("../img/variants.jpg");
+  background-image: linear-gradient(
+      to top,
+      rgba(48, 64, 89, 0.84),
+      rgba(48, 64, 89, 0)
+    ),
+    url("../img/variants.jpg");
   position: relative;
 }
 
 .variants-link {
   justify-content: center;
+  align-items: center;
   margin: 0 35px;
   font-size: 20px;
   line-height: 200%;
   color: #ffffff;
   transition: color 0.2s linear;
+}
+
+.variants-link-icon {
+  margin-left: 10px;
 }
 
 .variants-link::before {
@@ -524,16 +549,7 @@ p {
   left: 0;
 }
 
-.variants-link-desc {
-  margin-right: 10px;
-  transition: color 0.2s linear;
-}
-
-.variants-link-svg {
-  margin-top: 5px;
-}
-
-.variants-link .variants-link-svg path {
+.variants-link .variants-link-icon path {
   transition: stroke 0.2s linear;
 }
 
@@ -687,11 +703,12 @@ p {
 
 .contacts-table-button {
   text-align: start;
-  padding-top: 72px;
-  margin-bottom: 30px;
+  padding-top: 42px;
+  margin-bottom: 0;
 }
 
 .table-btn {
+  display: inline-block;
   padding: 30px;
   font-weight: 700;
   font-size: 16px;
@@ -816,7 +833,7 @@ p {
   background-color: var(--main-link-color);
 }
 
-.variants-link:focus-visible .variants-link-svg path {
+.variants-link:focus-visible .variants-link-icon path {
   stroke: var(--main-link-color);
 }
 
@@ -828,10 +845,21 @@ p {
   fill: var(--main-link-color);
 }
 
+.header-nav-list:focus-within,
+.offers-item-article:focus-within,
+.services-item:focus-within,
+.place-item:focus-within,
+.form-list:focus-within,
+.contacts-conteiner:focus-within,
+.footer-container:focus-within {
+  outline: 1px solid #CC9933;
+  outline-offset: 8px;
+}
+
 /* hover-эффекты */
 
 .header-link-logo:hover {
-  background-color: rgba(124, 95, 38, 0.884);
+  background-color: rgba(133, 129, 74, 0.884);
 }
 
 .header-link-contact:hover,
@@ -855,7 +883,7 @@ p {
   justify-content: space-around;
 }
 
-.variants-link:hover .variants-link-svg path {
+.variants-link:hover .variants-link-icon path {
   stroke: var(--main-link-color);
 }
 
@@ -889,7 +917,7 @@ p {
 }
 
 .services-item-link:hover .services-item-link-icon path {
-  stroke:  var(--light-link-color);
+  stroke: var(--light-link-color);
 }
 
 /* active-эффекты */
@@ -911,10 +939,16 @@ p {
 .header-link-sign:active {
   outline: none;
   color: var(--dark-link-color);
+  transform: translateY(2px) translateX(-2px);
 }
 
 .header-link-sign:active .header-link-sign-icon path {
   fill: var(--dark-link-color);
+}
+
+.head-link-right-1:active,
+.head-link-right-2:active {
+  transform: translateY(2px) translateX(-2px);
 }
 
 .variants-link:active {
@@ -922,7 +956,7 @@ p {
   color: var(--dark-link-color);
 }
 
-.variants-link:active .variants-link-svg path {
+.variants-link:active .variants-link-icon path {
   stroke: var(--dark-link-color);
 }
 
@@ -950,6 +984,12 @@ p {
   background-color: var(--dark-link-color);
 }
 
+.form-btn:active,
+.place-item-box-link:active,
+.table-btn:active {
+  transform: translateY(2px) translateX(-2px);
+}
+
 .offers-item-link:active {
   outline: none;
   color: #fff;
@@ -961,5 +1001,5 @@ p {
 }
 
 .services-item-link:active .services-item-link-icon path {
-  stroke:  var(--dark-link-color);
+  stroke: var(--dark-link-color);
 }
