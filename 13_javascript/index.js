@@ -37,17 +37,25 @@ $(".accordion").accordion({
 });
   
 
-//burger
+//burger - длинный путь
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   document.querySelector("#burger").addEventListener("click", function() {
+//     document.querySelector("#menu-burger").classList.toggle("is-active")
+//   });    
+//   $('.nav__btn_burger').click(function() {
+//     $('.nav__btn_burger .burger-line_1').toggleClass('burger-line_1-active');
+//     $('.nav__btn_burger .burger-line_2').toggleClass('burger-line_2-active');
+//     $('.nav__btn_burger .burger-line_3').toggleClass('burger-line_3-active');
+//   });  
+// });
+
+//burger - короткий путь
 
 document.addEventListener("DOMContentLoaded", function() {
   document.querySelector("#burger").addEventListener("click", function() {
-    document.querySelector("#menu-burger").classList.toggle("is-active")
-  });    
-  $('.nav__btn_burger').click(function() {
-    $('.nav__btn_burger .burger-line_1').toggleClass('burger-line_1-active');
-    $('.nav__btn_burger .burger-line_2').toggleClass('burger-line_2-active');
-    $('.nav__btn_burger .burger-line_3').toggleClass('burger-line_3-active');
-  });  
+    document.querySelector(".header").classList.toggle("is-active")
+  }); 
 });
 
 //burger-search
