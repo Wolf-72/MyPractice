@@ -132,7 +132,7 @@ p {
   min-width: 178px;
   font-weight: 400;
   font-size: 14px;
-  line-height: 19px;    
+  line-height: 19px;
   border: 1px solid transparent;
   border-radius: 10px;
 }
@@ -146,7 +146,7 @@ p {
 }
 
 .is-open .choices__inner {
-  border: 1px solid #CCB26E;
+  border: 1px solid #ccb26e;
   border-radius: 10px;
 } /* Изменяет цвет бордера при нажатии */
 
@@ -158,13 +158,14 @@ p {
   bottom: 0;
   left: 150px;
   transition: content 0.3s ease-in-out;
- } /* Устанавлявает кастомную галочку */
+} /* Устанавлявает кастомную галочку */
 
 .is-open .choices__inner:before {
   content: url("../img/select-open.jpg");
 } /* Меняет кастомную галочку */
 
-.choices__list--dropdown, .choices__list[aria-expanded] {
+.choices__list--dropdown,
+.choices__list[aria-expanded] {
   visibility: hidden;
   z-index: 1;
   position: absolute;
@@ -172,14 +173,15 @@ p {
   background-color: #fff;
   border: 1px solid #ddd;
   top: 0;
-  margin-top: -1px;  
+  margin-top: -1px;
   border-radius: 10px;
   overflow: hidden;
   word-break: break-all;
   will-change: visibility;
 }
 
-.choices__list--dropdown .choices__item--selectable.is-highlighted, .choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
+.choices__list--dropdown .choices__item--selectable.is-highlighted,
+.choices__list[aria-expanded] .choices__item--selectable.is-highlighted {
   background-color: #fff;
 }
 
@@ -193,7 +195,7 @@ p {
   padding-left: 15px;
 }
 
-.choices__list--dropdown .choices__item, 
+.choices__list--dropdown .choices__item,
 .choices__list[aria-expanded] .choices__item {
   position: relative;
   padding: 0;
@@ -238,7 +240,7 @@ p {
 
 /* Toolpip */
 
-.tooltip-container {  
+.tooltip-container {
   margin-right: 50px;
   margin-bottom: 50px;
   position: relative;
@@ -248,7 +250,7 @@ p {
   background-color: #fff;
 }
 
-.tooltip-container__desc {  
+.tooltip-container__desc {
   font-weight: 400;
   font-size: 14px;
   line-height: 170%;
@@ -262,7 +264,7 @@ p {
   height: 16px;
   background: url("../img/info-dis.png");
   cursor: pointer;
-  transition: background .3s ease-in-out;
+  transition: background 0.3s ease-in-out;
 }
 
 .info:hover,
@@ -271,20 +273,26 @@ p {
 }
 
 .tippy-box {
-  background-color: #424242;;
-  padding: 7px 15px;
-  border-radius: 0;
+  background-color: #424242;
+  padding: 5px 15px;
+  border-radius: 0; 
 }
 
+.tippy-content {
+  max-width: 170px;
+  max-height: none;
+ } /* Задаёт размер всплывающей подсказки. */
+
 .tippy-arrow {
-  background-color: #424242;
+   background-color: #424242; /*верхняя часть стрелки */
+   color: #424242; /*нижняя часть стрелки */   
 }
 
 /* Toolpip-2 */
 
-.tooltip-2 { 
+.tooltip-2 {
   margin-right: 50px;
-  margin-bottom: 50px; 
+  margin-bottom: 50px;
   position: relative;
   padding: 20px 78px 20px 30px;
   width: 375px;
@@ -292,7 +300,7 @@ p {
   background-color: #fff;
 }
 
-.tooltip-2__desc {  
+.tooltip-2__desc {
   font-weight: 400;
   font-size: 14px;
   line-height: 170%;
@@ -306,7 +314,7 @@ p {
   height: 16px;
   background: url("../img/info-dis.png");
   cursor: pointer;
-  transition: background .3s ease-in-out;
+  transition: background 0.3s ease-in-out;
 }
 
 .marker:hover,
@@ -320,9 +328,9 @@ p {
   right: 28px;
   width: 163px;
   height: 38px;
-  background:url("../img/tooltip.jpg");
+  background: url("../img/tooltip.jpg");
   opacity: 0;
-  transition: opacity .3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .marker:hover + .popup,
@@ -354,7 +362,6 @@ p {
 }
 
 .simplebar-scrollbar:before {
-  height: 70px;
   background: #ccb26e;
   border-radius: 5px;
 }
@@ -372,19 +379,19 @@ p {
   align-items: center;
   width: 440px;
   height: 410px;
-  background-color: #333;
-  font-family: "Roboto";
+  background-color: #333;  
 }
 
 input {
   width: 380px;
   height: 60px;
   padding-left: 20px;
-  background-color: #fff;  
+  background-color: #fff;
   border-radius: 10px;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
+  border: none;
 }
 
 .row-1,
@@ -402,15 +409,15 @@ input {
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
-  color: #FF5C00;
+  color: #ff5c00;
 }
 
 .is-invalid:focus-visible {
-  outline: none;  
+  outline: none;
 }
 
 .is-invalid {
-  border: 2px solid #FF5C00; 
+  border: 2px solid #ff5c00;
 }
 
 .btn-container {
@@ -420,7 +427,7 @@ input {
 }
 
 .form-btn {
-  background-color: #FF5C00;
+  background-color: #ff5c00;
   color: #fff;
   width: 192px;
   padding: 17px 53px;
@@ -429,4 +436,5 @@ input {
   font-weight: 400;
   font-size: 20px;
   line-height: 23px;
+  border: none;
 }

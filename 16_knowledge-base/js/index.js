@@ -27,7 +27,7 @@ function init() {
    // Вспомогательный класс, который можно использовать вместо GeoObject c типом геометрии «Point» (см. предыдущий пример) - можно добавлять свои метки:
     var myPlacemark = new ymaps.Placemark([48.872185073737896,2.354223999999991], {}, {
     iconLayout: 'default#image',
-    iconImageHref: '../img/Subtract.svg', // Путь до нашей картинки
+    iconImageHref: 'img/Subtract.svg', // Путь до нашей картинки из index.html
     iconImageSize: [28, 60], // Размер по ширине и высоте
     iconImageOffset: [-42, -42]  // Смещение левого верхнего угла иконки относительно её «ножки» (точки привязки).
   });
@@ -44,6 +44,12 @@ tippy('.info', {
 
 // Маска и валидация
 
+//маска
+var selector = document.querySelector("input[type='tel']"); //выбираем все инпуты с нужным type
+var im = new Inputmask("+7 (999)-999-99-99"); // показываем, как должно выглядеть поле ввода
+im.mask(selector); //подключаем селектор, чтобы всё работало.
+
+//валидация
 const validation = new JustValidate('.form', {
   errorFieldCssClass: 'is-invalid',
   errorLabelStyle: {
@@ -59,6 +65,16 @@ validation
       rule: 'required',
       errorMessage: 'Как вас зовут?',
     },    
+    {
+      rule: 'minLength',
+      value: 2,
+      errorMessage: 'Имя не может быть короче 2 знаков',
+    },
+    {
+      rule: 'maxLength',
+      value: 30,
+      errorMessage: 'Имя не может быть длиннее 30 знаков',
+    },
   ])
   .addField('#tel', [
     {
@@ -70,6 +86,10 @@ validation
     {
       rule: 'required',
       errorMessage: 'Укажите ваш e-mail',
+    },
+    {
+      rule: 'email',
+      errorMessage: 'Email введён в неправильном формате',
     },
   ]) ;
 
