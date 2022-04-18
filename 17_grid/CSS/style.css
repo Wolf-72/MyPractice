@@ -265,7 +265,7 @@ img {
   border-radius: 40px 40px 0 0;
 }
 
-.teacher__name {
+.teachers__name {
   padding-top: 32px;
   margin-bottom: 7px;
   font-weight: 700;
@@ -292,10 +292,20 @@ img {
 }
 
 .training__svg {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--text-color);
   position: absolute;
   z-index: 5;
   top: 10px;
   right: 5px;
+}
+
+.training__svg > p {
+  padding-left: 7px;
 }
 
 .training__title {
@@ -479,7 +489,7 @@ small {
   .teachers__article  {
     margin-bottom: 23px;
   }
-  .teacher__name {
+  .teachers__name {
     padding-top: 31px;
     margin-bottom: 8px;
   } 
