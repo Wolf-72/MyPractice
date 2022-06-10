@@ -12,9 +12,11 @@
 	<meta name="msapplication-TileColor" content="#dab43e">
 	<meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="libs/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">	
-	<script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script> 
+	<link rel="stylesheet" href="libs/graph-modal.min.css">
+	<link rel="stylesheet" href="libs/choices.min.css">
+	<link rel="stylesheet" href="libs/jquery-ui.css">
+	<link rel="stylesheet" href="libs/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/style.css">		
   <title>W-Wave-Radio</title>
 </head>
 <body>
@@ -26,11 +28,10 @@
 						<source media="(max-width: 576px)" srcset="img/logo-h-576-320.png">
 						<source media="(max-width: 1024px)" srcset="img/logo-h-1024-768.png">
 						<source media="(min-width: 1025px)" srcset="img/logo-h-1920.png">
-						<img src="img/logo-h.jpg" alt="Logo">
+						<img src="img/logo-h.jpg" alt="Logo w-wave">
 					</picture>
 				</div>															
-				<nav class="header__nav header__nav_top">
-					<!-- Сделать плавные переходы!!! -->
+				<nav class="header__nav header__nav_top">					
 					<button aria-label="Открыть навигацию" id="burger" class="header__btn-burger btn-reset flex">
 						<span class="burger__line burger__line_1"></span>
 						<span class="burger__line burger__line_2"></span>
@@ -41,19 +42,19 @@
 							<a href="#podcast" class="header__link">Подкасты</a>
 						</li>
 						<li class="header__item header__item_top">
-							<a href="#" class="header__link">Передачи</a>
+							<a href="#broadcast" class="header__link">Передачи</a>
 						</li>
 						<li class="header__item header__item_top">
-							<a href="#" class="header__link">Гости</a>
+							<a href="#guest" class="header__link">Гости</a>
 						</li>
 						<li class="header__item header__item_top">
-							<a href="#" class="header__link">Плейлисты</a>
+							<a href="#playlist" class="header__link">Плейлисты</a>
 						</li>
 						<li class="header__item header__item_top header__item_net">
 							<a href="#" class="header__link">Сетка</a>
 						</li>
 						<li class="header__item header__item_top">
-							<a href="#" class="header__link">О нас</a>
+							<a href="#about" class="header__link">О нас</a>
 						</li>
 					</ul>
 				</nav>
@@ -73,7 +74,7 @@
 							</svg>
 						</button>
 					</div>
-					<a href="#" aria-label="Вход" class="btn-reset header__btn-enter" data-bs-toggle="modal" data-bs-target="#myModal">
+					<a href="#" aria-label="Вход" class="btn-reset header__btn-enter" data-graph-path="enter">
 						<i class="header__btn-icon">
 							<svg width="19" height="18" viewbox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M9.5 1.5L2 5.25L9.5 9L17 5.25L9.5 1.5Z" stroke="#121723" stroke-width="1.5" stroke-linecap="round"
@@ -89,8 +90,7 @@
 		</div>
 		<div class="header__container flex">
 			<div class="header__wrap header__wrap_bottom flex">
-				<nav class="header__nav header__nav_bottom">
-					<!-- Сделать плавные переходы??? -->
+				<nav class="header__nav header__nav_bottom">					
 					<ul class="header__list header__list_bottom list-reset flex">
 						<li class="header__item header__item_bottom">
 							<a href="#" class="header__link">Новости</a>
@@ -162,94 +162,27 @@
 			</div>
 		</div>
 
-    <!-- Модальное окно - форма входа -->
-
-		<div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">			
-					<div class="modal-body">
-						<div class="header__enter validation">			
-							<button aria-label="Закрыть" class="header__btn-closed btn-reset" type="button" data-bs-dismiss="modal">
-								<svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<circle cx="21" cy="21" r="19.5" stroke="#A1A6B4" stroke-width="3" />
-									<path d="M29.6777 12L12 29.6777M29.6777 29.6777L12 12" stroke="#A1A6B4" stroke-width="3" />
-								</svg>
-							</button>
-							<h2 class="header__subtite">
-								Вход
-							</h2>
-							<div class="header__span">
-								<p class="header__text-enter">Если у&nbsp;вас ещё нет аккаунта,</p>
-								<a href="#" class="header__link-enter">зарегистрируйтесь</a>
-							</div>				
-								<form action="https://jsonplaceholder.typicode.com/posts/" method="post" class="header__form-enter">
-									<div class="header__form-row-1">
-										<label>
-											<input type="text" name="login" value="" placeholder="Логин" class="header__input-login input-reset">
-										</label>
-									</div>
-									<div class="header__form-row-2">
-										<label>
-											<input name="password" type="password" class="header__input-password input-reset" placeholder="Пароль">
-										</label>
-									</div>
-									<button class="header__btn-form btn-reset" type="submit" value="Войти">Войти</button>
-								</form>
-								<div class="header__social-wrap">
-									<p class="header__social-text">
-										Войти с&nbsp;помощью:
-									</p>
-									<span class="header__social-span">
-										<a href="#" class="header__social-link header__social-link_fb">
-											<svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path
-													d="M26.3 36.6666V23.7666H30.6204L31.2666 18.7518H26.3V15.5518C26.3 14.1 26.7037 13.1092 28.7852 13.1092H31.4407V8.62405C30.1552 8.48765 28.8631 8.42151 27.5704 8.42591C23.7426 8.42591 21.1222 10.7629 21.1222 15.0555V18.7518H16.7926V23.7666H21.1222V36.6666H5.18516C4.69402 36.6666 4.223 36.4715 3.87571 36.1243C3.52842 35.777 3.33331 35.3059 3.33331 34.8148V5.18516C3.33331 4.69402 3.52842 4.223 3.87571 3.87571C4.223 3.52842 4.69402 3.33331 5.18516 3.33331H34.8148C35.3059 3.33331 35.777 3.52842 36.1243 3.87571C36.4715 4.223 36.6666 4.69402 36.6666 5.18516V34.8148C36.6666 35.3059 36.4715 35.777 36.1243 36.1243C35.777 36.4715 35.3059 36.6666 34.8148 36.6666H26.3Z"
-													fill="#A1A6B4" />
-											</svg>
-										</a>
-										<a href="#" class="header__social-link">
-											<svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<rect x="3" y="3" width="33.33" height="33.33" rx="2" fill="#A1A6B4" />
-												<path
-													d="M20.7487 26.332H19.3854C19.3854 26.332 16.3772 26.5131 13.7277 23.7545C10.8383 20.7461 8.28686 14.7765 8.28686 14.7765C8.28686 14.7765 8.13973 14.3853 8.29964 14.1959C8.47938 13.9831 8.96857 13.9695 8.96857 13.9695L12.2278 13.9482C12.2278 13.9482 12.5349 13.9994 12.7547 14.1608C12.9359 14.294 13.0373 14.543 13.0373 14.543C13.0373 14.543 13.5641 15.8752 14.2617 17.0804C15.6233 19.4331 16.2575 19.9477 16.7198 19.6957C17.3934 19.3283 17.1914 16.3698 17.1914 16.3698C17.1914 16.3698 17.2037 15.296 16.8522 14.8177C16.58 14.4475 16.0667 14.3391 15.84 14.3089C15.6566 14.2844 15.9576 13.8587 16.3478 13.6676C16.9343 13.3803 17.9699 13.3641 19.1938 13.3765C20.1473 13.3863 20.4219 13.4458 20.7946 13.5357C21.6597 13.7446 21.6327 14.4138 21.5745 15.8578L21.5745 15.8579C21.5571 16.2893 21.537 16.7899 21.537 17.3681C21.537 17.4983 21.5332 17.6371 21.5293 17.7798V17.7799C21.509 18.5193 21.4858 19.3656 21.9726 19.6802C22.2223 19.8415 22.8331 19.7042 24.3603 17.111C25.084 15.8819 25.627 14.4368 25.627 14.4368C25.627 14.4368 25.7453 14.1791 25.9297 14.0688C26.1181 13.9561 26.3726 13.9907 26.3726 13.9907L29.8023 13.9695C29.8023 13.9695 30.8329 13.8466 30.9997 14.3118C31.1747 14.8001 30.6146 15.9402 29.2135 17.8077C27.8827 19.5813 27.236 20.2332 27.2968 20.8106C27.3401 21.2221 27.7429 21.5959 28.5137 22.311L28.5668 22.3603C30.2548 23.9272 30.7051 24.7501 30.8121 24.9456C30.8207 24.9615 30.8271 24.9732 30.8318 24.9809C31.5873 26.2337 29.9939 26.332 29.9939 26.332L26.9477 26.3746C26.9477 26.3746 26.2931 26.5041 25.4317 25.9125C24.9813 25.6033 24.5409 25.0985 24.1214 24.6174L24.1214 24.6174C23.4798 23.8818 22.8868 23.2019 22.3806 23.3624C21.5317 23.6319 21.5583 25.4613 21.5583 25.4613C21.5583 25.4613 21.5645 25.852 21.371 26.0601C21.1605 26.2866 20.7487 26.332 20.7487 26.332Z"
-													fill="#121723" />
-											</svg>
-										</a>
-										<a href="#" class="header__social-link">
-											<svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<rect x="3" y="3" width="33.33" height="33.33" rx="2" fill="#A1A6B4" />
-												<path
-													d="M23.9404 14.9923C23.1518 14.2694 21.7687 13.4043 19.7184 13.4043C16.8309 13.4043 14.3802 15.2649 13.4945 17.8364C13.2761 18.5001 13.1427 19.2111 13.1427 19.9459C13.1427 20.6806 13.2761 21.3917 13.5066 22.0553C14.3802 24.6269 16.8309 26.4874 19.7184 26.4874C21.3441 26.4874 22.5816 26.0489 23.5036 25.4208C24.9595 24.4254 25.6147 22.9441 25.7359 21.9605H19.7184V18.0024H29.9701C30.1278 18.666 30.2007 19.3059 30.2007 20.1829C30.2007 23.4299 29.0116 26.1675 26.9492 28.028C25.1414 29.6634 22.6665 30.6115 19.7184 30.6115C15.4478 30.6115 11.7596 28.2176 9.96405 24.7335C9.22401 23.2877 8.79938 21.6642 8.79938 19.9459C8.79938 18.2275 9.22401 16.604 9.96405 15.1582C11.7596 11.6741 15.4478 9.28027 19.7184 9.28027C22.6665 9.28027 25.1294 10.335 27.022 12.0533L23.9404 14.9923Z"
-													fill="#121723" />
-											</svg>
-										</a>
-									</span>
-								</div>			
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+    
 	</header>
 
   <main class="main">
-	<!-- hero -->
+		<!-- hero -->
 		<section class="hero">
-			<div class="content hero__content">
+			<div class="container hero__container">
 				<h1 class="hero__title">
 					Радио W-Wave
 				</h1>
 				<p class="hero__desc">
 					Привет, на&nbsp;связи W-Wave! Раньше мы&nbsp;были 					
 						<a href="#" class="hero__link-desc">изданием,</a> 									
-					а&nbsp;теперь пробуем себя в&nbsp;разоворном жанре. Говорим о&nbsp;музыке, политике, истории, науке и&nbsp;культуре. Здесь, помимо прямого эфира&nbsp;&mdash; архив передач и&nbsp;многое другое :)
+					а&nbsp;теперь пробуем себя в&nbsp;разговорном жанре. Говорим о&nbsp;музыке, политике, истории, науке и&nbsp;культуре. Здесь, помимо прямого эфира&nbsp;&mdash; архив передач и&nbsp;многое другое :)
 				</p>
 				<a href="#" class="hero__link">Слушать эфир</a>
 			</div>
 		</section>
 		<!-- Подкасты -->
 		<section id="podcast" class="podcast">
-			<div class="content podcast__content">
+			<div class="container podcast__container">
 				<h2 class="podcast__title">
 					Подкасты
 				</h2>							
@@ -461,7 +394,7 @@
 							<span class="data">5&nbsp;июня</span>
 						</div>	
 					</li>
-					<li class="podcast__item podcast__item-5" id="hidden-5">
+					<li class="podcast__item podcast__item-5">
 						<div class="podcast__wrapper flex">
 							<article class="podcast__article">
 								<span class="duration">
@@ -513,7 +446,7 @@
 							<span class="data">2&nbsp;июня</span>
 						</div>	
 					</li>
-					<li class="podcast__item podcast__item-6" id="hidden-6">
+					<li class="podcast__item podcast__item-6">
 						<div class="podcast__wrapper flex">
 							<article class="podcast__article">
 								<span class="duration">
@@ -565,7 +498,7 @@
 							<span class="data">28&nbsp;мая</span>
 						</div>	
 					</li>
-					<li class="podcast__item podcast__item-7" id="hidden-7">
+					<li class="podcast__item podcast__item-7">
 						<div class="podcast__wrapper flex">
 							<article class="podcast__article">
 								<span class="duration">
@@ -617,7 +550,7 @@
 							<span class="data">22&nbsp;мая</span>
 						</div>	
 					</li>
-					<li class="podcast__item podcast__item-8" id="hidden-8">
+					<li class="podcast__item podcast__item-8">
 						<div class="podcast__wrapper flex">
 							<article class="podcast__article">
 								<span class="duration">
@@ -668,9 +601,8 @@
 						<div class="podcast__data flex">
 							<span class="data">18&nbsp;мая</span>
 						</div>	
-					</li>
-					<!-- Ниже в скрываемых карточках указаны классы и id из bootstrap -->
-					<li class="podcast__item podcast__item-8 collapse multi-collapse" id="hidden-9">
+					</li>					
+					<li class="podcast__item podcast__item-8">
 						<div class="podcast__wrapper flex">
 							<article class="podcast__article">
 								<span class="duration">
@@ -721,7 +653,7 @@
 							<span class="data">18&nbsp;мая</span>
 						</div>	
 					</li>
-					<li class="podcast__item podcast__item-8 collapse multi-collapse" id="hidden-10">
+					<li class="podcast__item podcast__item-8">
 						<div class="podcast__wrapper flex">
 							<article class="podcast__article">
 								<span class="duration">
@@ -773,7 +705,7 @@
 							<span class="data">18&nbsp;мая</span>
 						</div>	
 					</li>
-					<li class="podcast__item podcast__item-8 collapse multi-collapse" id="hidden-11">
+					<li class="podcast__item podcast__item-8">
 						<div class="podcast__wrapper flex">
 							<article class="podcast__article">
 								<span class="duration">
@@ -825,7 +757,7 @@
 							<span class="data">18&nbsp;мая</span>
 						</div>	
 					</li>
-					<li class="podcast__item podcast__item-8 collapse multi-collapse" id="hidden-12">
+					<li class="podcast__item podcast__item-8">
 						<div class="podcast__wrapper flex">
 							<article class="podcast__article">
 								<span class="duration">
@@ -843,8 +775,7 @@
 									<circle cx="24" cy="24" r="20" stroke="#A1A6B4" stroke-width="2"/>
 									<path d="M21.6924 31.7965L31.5716 24.7996C32.1428 24.3998 32.1428 23.6002 31.5716 23.2004L21.6924 16.2035C20.9943 15.7037 20 16.1835 20 17.0031V30.9969C20 31.8165 20.9943 32.2963 21.6924 31.7965Z" fill="#A1A6B4"/>
 								</svg>
-							</button>
-							
+							</button>							
 						</div>
 						<ul class="podcast__statistics-list list-reset flex">
 							<li class="podcast__statisics-item flex" tabindex="0">
@@ -877,18 +808,1545 @@
 							<span class="data">18&nbsp;мая</span>
 						</div>	
 					</li>
-				</ul>
-				<!-- Ниже в кнопке атрибуты из bootstrap-->
-				<button class="podcast__btn-bottom btn-reset" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="hidden-9  hidden-10 hidden-11 hidden-12">
+				</ul>				
+				<button class="podcast__btn-bottom btn-reset" type="button">
 					Ещё подкасты
 				</button>
 			</div>
 		</section>
+		<!-- Передачи -->
+		<section id="broadcast" class="broadcast">
+			<div class="container broadcast__container">				
+				<div class="broadcast__content flex">					
+					<div class="broadcast__wrap broadcast__wrap_top">
+						<h2 class="broadcast__title">
+							Передачи
+						</h2>
+						<p class="broadcast__autor">Автор:</p>
+						<select name="autor" class="broadcast__select">
+							<option value="Дмитрий Гутенберг">Дмитрий Гутенберг</option>
+							<option value="Татьяна Флеганова">Татьяна Флеганова</option>
+							<option value="Анна Васильева">Анна Васильева</option>
+							<option value="Пётр Дмитриевский">Пётр Дмитриевский</option>
+						</select>	
+					</div>
+					<div class="broadcast__wrap broadcast__wrap_bottom flex">
+						<div class="broadcast__wrapper-mic"></div>
+						<a href="#" aria-label="Архив" class="btn-reset broadcast__link">
+							<i class="broadcast__icon">
+								<svg width="19" height="18" viewbox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M9.5 1.5L2 5.25L9.5 9L17 5.25L9.5 1.5Z" stroke="#121723" stroke-width="1.5" stroke-linecap="round"
+										stroke-linejoin="round" />
+									<path d="M2 12.75L9.5 16.5L17 12.75" stroke="#121723" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+									<path d="M2 9L9.5 12.75L17 9" stroke="#121723" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+								</svg>
+							</i>Архив</a>
+						<p class="broadcast__desc">
+							В&nbsp;архив попадают все передачи, которые вы пропустили!  <span>Enjoy:)</span> 
+						</p>	
+					</div>
+					<ul class="broadcast__list list-reset flex">
+						<li class="broadcast__item">
+							<div class="broadcast__picture">
+								<picture class="picture">
+									<source media="(min-width: 621px)" srcset="img/broadcast-1-1440.jpg">
+									<source media="(max-width: 620px)" srcset="img/broadcast-1-320.jpg">
+									<img src="img/broadcast-1.png" alt="О людях и книгах">
+								</picture>								
+							</div>
+							<article class="broadcast__article">
+									<h3 class="broadcast__subtitle">
+										О&nbsp;людях и&nbsp;книгах
+									</h3>
+									<p class="broadcast__text">
+										Анонсируется отдельно
+									</p>
+									<a href="#" class="broadcast__link-article">
+											Подробнее
+											<svg width="21" height="8" viewbox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M20.3536 4.35355C20.5488 4.15829 20.5488 3.84171 20.3536 3.64645L17.1716 0.464466C16.9763 0.269204 16.6597 0.269204 16.4645 0.464466C16.2692 0.659728 16.2692 0.976311 16.4645 1.17157L19.2929 4L16.4645 6.82843C16.2692 7.02369 16.2692 7.34027 16.4645 7.53553C16.6597 7.7308 16.9763 7.7308 17.1716 7.53553L20.3536 4.35355ZM0 4.5H20V3.5H0V4.5Z" fill="#121723"/>
+										</svg>
+									</a>																		
+								</article>
+						</li>
+						<li class="broadcast__item">
+							<div class="broadcast__picture">
+								<picture class="picture">
+									<source media="(min-width: 621px)" srcset="img/broadcast-2-1440.jpg">
+									<source media="(max-width: 620px)" srcset="img/broadcast-2-320.jpg">
+									<img src="img/broadcast-2.png" alt="Графомания">
+								</picture>								
+							</div>
+							<article class="broadcast__article">
+									<h3 class="broadcast__subtitle">
+										Графомания&nbsp;td.
+									</h3>
+									<p class="broadcast__text">
+										По&nbsp;понедельникам в&nbsp;10:00
+									</p>
+									<a href="#" class="broadcast__link-article">
+											Подробнее
+											<svg width="21" height="8" viewbox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M20.3536 4.35355C20.5488 4.15829 20.5488 3.84171 20.3536 3.64645L17.1716 0.464466C16.9763 0.269204 16.6597 0.269204 16.4645 0.464466C16.2692 0.659728 16.2692 0.976311 16.4645 1.17157L19.2929 4L16.4645 6.82843C16.2692 7.02369 16.2692 7.34027 16.4645 7.53553C16.6597 7.7308 16.9763 7.7308 17.1716 7.53553L20.3536 4.35355ZM0 4.5H20V3.5H0V4.5Z" fill="#121723"/>
+										</svg>
+									</a>																		
+								</article>
+						</li>
+						<li class="broadcast__item">
+							<div class="broadcast__picture">
+								<picture class="picture">
+									<source media="(min-width: 621px)" srcset="img/broadcast-3-1440.jpg">
+									<source media="(max-width: 620px)" srcset="img/broadcast-3-320.jpg">
+									<img src="img/broadcast-3.png" alt="Не Рим, не Троя">
+								</picture>								
+							</div>
+							<article class="broadcast__article">
+									<h3 class="broadcast__subtitle">
+										Ни&nbsp;Рим ни&nbsp;Троя
+									</h3>
+									<p class="broadcast__text">
+										По&nbsp;вторникам в&nbsp;12:00
+									</p>
+									<a href="#" class="broadcast__link-article">
+											Подробнее
+											<svg width="21" height="8" viewbox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M20.3536 4.35355C20.5488 4.15829 20.5488 3.84171 20.3536 3.64645L17.1716 0.464466C16.9763 0.269204 16.6597 0.269204 16.4645 0.464466C16.2692 0.659728 16.2692 0.976311 16.4645 1.17157L19.2929 4L16.4645 6.82843C16.2692 7.02369 16.2692 7.34027 16.4645 7.53553C16.6597 7.7308 16.9763 7.7308 17.1716 7.53553L20.3536 4.35355ZM0 4.5H20V3.5H0V4.5Z" fill="#121723"/>
+										</svg>
+									</a>																		
+								</article>
+						</li>
+						<li class="broadcast__item">
+							<div class="broadcast__picture">
+								<picture class="picture">
+									<source media="(min-width: 621px)" srcset="img/broadcast-4-1440.jpg">
+									<source media="(max-width: 620px)" srcset="img/broadcast-4-320.jpg">
+									<img src="img/broadcast-4.png" alt="Эрудит">
+								</picture>								
+							</div>
+							<article class="broadcast__article">
+									<h3 class="broadcast__subtitle">
+										Эрудит
+									</h3>
+									<p class="broadcast__text">
+										По&nbsp;пятницам в&nbsp;17:00
+									</p>
+									<a href="#" class="broadcast__link-article">
+											Подробнее
+											<svg width="21" height="8" viewbox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M20.3536 4.35355C20.5488 4.15829 20.5488 3.84171 20.3536 3.64645L17.1716 0.464466C16.9763 0.269204 16.6597 0.269204 16.4645 0.464466C16.2692 0.659728 16.2692 0.976311 16.4645 1.17157L19.2929 4L16.4645 6.82843C16.2692 7.02369 16.2692 7.34027 16.4645 7.53553C16.6597 7.7308 16.9763 7.7308 17.1716 7.53553L20.3536 4.35355ZM0 4.5H20V3.5H0V4.5Z" fill="#121723"/>
+										</svg>
+									</a>																		
+								</article>
+						</li>
+						<li class="broadcast__item">
+							<div class="broadcast__picture">
+								<picture class="picture">
+									<source media="(min-width: 621px)" srcset="img/broadcast-5-1440.jpg">
+									<source media="(max-width: 620px)" srcset="img/broadcast-5-320.jpg">
+									<img src="img/broadcast-5.png" alt="Тонкости эпох">
+								</picture>								
+							</div>
+							<article class="broadcast__article">
+									<h3 class="broadcast__subtitle">
+										Тонкости эпох
+									</h3>
+									<p class="broadcast__text">
+										По&nbsp;субботам в&nbsp;10:00
+									</p>
+									<a href="#" class="broadcast__link-article">
+											Подробнее
+											<svg width="21" height="8" viewbox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M20.3536 4.35355C20.5488 4.15829 20.5488 3.84171 20.3536 3.64645L17.1716 0.464466C16.9763 0.269204 16.6597 0.269204 16.4645 0.464466C16.2692 0.659728 16.2692 0.976311 16.4645 1.17157L19.2929 4L16.4645 6.82843C16.2692 7.02369 16.2692 7.34027 16.4645 7.53553C16.6597 7.7308 16.9763 7.7308 17.1716 7.53553L20.3536 4.35355ZM0 4.5H20V3.5H0V4.5Z" fill="#121723"/>
+										</svg>
+									</a>																		
+								</article>
+						</li>
+						<li class="broadcast__item">
+							<div class="broadcast__picture">
+								<picture class="picture">
+									<source media="(min-width: 621px)" srcset="img/broadcast-6-1440.jpg">
+									<source media="(max-width: 620px)" srcset="img/broadcast-6-320.jpg">
+									<img src="img/broadcast-6.png" alt="Живые мысли">
+								</picture>								
+							</div>
+							<article class="broadcast__article">
+									<h3 class="broadcast__subtitle">
+										Живые мысли
+									</h3>
+									<p class="broadcast__text">
+										По&nbsp;воскресеньям в&nbsp;15:30
+									</p>
+									<a href="#" class="broadcast__link-article">
+											Подробнее
+											<svg width="21" height="8" viewbox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M20.3536 4.35355C20.5488 4.15829 20.5488 3.84171 20.3536 3.64645L17.1716 0.464466C16.9763 0.269204 16.6597 0.269204 16.4645 0.464466C16.2692 0.659728 16.2692 0.976311 16.4645 1.17157L19.2929 4L16.4645 6.82843C16.2692 7.02369 16.2692 7.34027 16.4645 7.53553C16.6597 7.7308 16.9763 7.7308 17.1716 7.53553L20.3536 4.35355ZM0 4.5H20V3.5H0V4.5Z" fill="#121723"/>
+										</svg>
+									</a>																		
+								</article>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!-- Гости -->
+		<section class="guest" id="guest">
+			<div class="container guest__container">
+				<div class="guest__content-desc">
+					<h2 class="guest__title">
+						Гости
+					</h2>
+					<h3 class="guest__subtitle">
+						У&nbsp;нас бывают:
+					</h3>
+					<p class="guest__desc">
+						Блогеры, арт-критики и&nbsp;деятели искусства, музыканты, молодые учёные и&nbsp;люди науки, историки, филологи и&nbsp;много других интересных гостей!
+					</p>
+				</div>
+				<div class="guest__main-content flex">
+					<ul class="guest__accordion-list list-reset">
+						<li class="guest__accordion-item">
+							<div class="guest__accordion-toc flex">
+								<h3 class="guest__accordion-title">Блогеры</h3>
+								<svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="21" cy="21" r="20" stroke="#A1A6B4" stroke-width="2"/>
+									<path d="M13 19L21 27L29 19" stroke="#A1A6B4" stroke-width="2" stroke-linecap="square"/>
+								</svg>
+							</div>
+							<ul class="guest__list list-reset flex">
+								<li class="guest__name" data-path="one"><a href="#denisov">Сергей Денисов</a></li>
+								<li class="guest__name" data-path="two"><a href="#vojnovski">Евгений Войновский</a></li>
+								<li class="guest__name" data-path="three"><a href="#sviridovski">Олег Свиридовский</a></li>
+								<li class="guest__name" data-path="four"><a href="#telman">Денис Тельман</a></li>								
+								<li class="guest__name" data-path="five"><a href="#mechnikov">Матвей Мечников</a></li>
+								<li class="guest__name presona-active" data-path="six"><a href="#martinova">Ольга Мартынова</a></li>
+								<li class="guest__name" data-path="seven"><a href="#kaupers">Владислав Кауперс</a></li>
+								<li class="guest__name" data-path="eight"><a href="#gorin">Юрий Горин</a></li>							
+								<li class="guest__name" data-path="nine"><a href="#prusino">Константин Прусино</a></li>
+								<li class="guest__name" data-path="ten"><a href="#mihalok">Дмитрий Михалок</a></li>
+								<li class="guest__name" data-path="eleven"><a href="#pozhitnikov">Михаил Пожитников</a></li>
+								<li class="guest__name" data-path="twelve"><a href="#sergeev">Максим Сергеев</a></li>					
+								<li class="guest__name" data-path="thirteen"><a href="#kalitnikov">Иван Калитников</a></li>
+								<li class="guest__name" data-path="fourteen"><a href="#piotrovski">Пётр Пиотровский</a></li>
+								<li class="guest__name" data-path="fifteen"><a href="#polujan">Георгий Полуян</a></li>				
+							</ul>
+						</li>
+						<li class="guest__accordion-item">
+							<div class="guest__accordion-toc flex">
+								<h3 class="guest__accordion-title">Арт-критики</h3>
+								<svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="21" cy="21" r="20" stroke="#A1A6B4" stroke-width="2"/>
+									<path d="M13 19L21 27L29 19" stroke="#A1A6B4" stroke-width="2" stroke-linecap="square"/>
+								</svg>
+							</div>
+							<ul class="guest__list list-reset flex">
+								<li class="guest__name" data-path="one"><a href="#denisov">Сергей Денисов</a></li>
+								<li class="guest__name" data-path="two"><a href="#vojnovski">Евгений Войновский</a></li>
+								<li class="guest__name" data-path="three"><a href="#sviridovski">Олег Свиридовский</a></li>
+								<li class="guest__name" data-path="four"><a href="#telman">Денис Тельман</a></li>								
+								<li class="guest__name" data-path="five"><a href="#mechnikov">Матвей Мечников</a></li>
+								<li class="guest__name presona-active" data-path="six"><a href="#martinova">Ольга Мартынова</a></li>
+								<li class="guest__name" data-path="seven"><a href="#kaupers">Владислав Кауперс</a></li>
+								<li class="guest__name" data-path="eight"><a href="#gorin">Юрий Горин</a></li>							
+								<li class="guest__name" data-path="nine"><a href="#prusino">Константин Прусино</a></li>
+								<li class="guest__name" data-path="ten"><a href="#mihalok">Дмитрий Михалок</a></li>
+								<li class="guest__name" data-path="eleven"><a href="#pozhitnikov">Михаил Пожитников</a></li>
+								<li class="guest__name" data-path="twelve"><a href="#sergeev">Максим Сергеев</a></li>					
+								<li class="guest__name" data-path="thirteen"><a href="#kalitnikov">Иван Калитников</a></li>
+								<li class="guest__name" data-path="fourteen"><a href="#piotrovski">Пётр Пиотровский</a></li>
+								<li class="guest__name" data-path="fifteen"><a href="#polujan">Георгий Полуян</a></li>		
+							</ul>
+						</li>
+						<li class="guest__accordion-item">
+							<div class="guest__accordion-toc flex">
+								<h3 class="guest__accordion-title">Художники</h3>
+								<svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="21" cy="21" r="20" stroke="#A1A6B4" stroke-width="2"/>
+									<path d="M13 19L21 27L29 19" stroke="#A1A6B4" stroke-width="2" stroke-linecap="square"/>
+								</svg>
+							</div>
+							<ul class="guest__list list-reset flex">
+								<li class="guest__name" data-path="one"><a href="#denisov">Сергей Денисов</a></li>
+								<li class="guest__name" data-path="two"><a href="#vojnovski">Евгений Войновский</a></li>
+								<li class="guest__name" data-path="three"><a href="#sviridovski">Олег Свиридовский</a></li>
+								<li class="guest__name" data-path="four"><a href="#telman">Денис Тельман</a></li>								
+								<li class="guest__name" data-path="five"><a href="#mechnikov">Матвей Мечников</a></li>
+								<li class="guest__name presona-active" data-path="six"><a href="#martinova">Ольга Мартынова</a></li>
+								<li class="guest__name" data-path="seven"><a href="#kaupers">Владислав Кауперс</a></li>
+								<li class="guest__name" data-path="eight"><a href="#gorin">Юрий Горин</a></li>							
+								<li class="guest__name" data-path="nine"><a href="#prusino">Константин Прусино</a></li>
+								<li class="guest__name" data-path="ten"><a href="#mihalok">Дмитрий Михалок</a></li>
+								<li class="guest__name" data-path="eleven"><a href="#pozhitnikov">Михаил Пожитников</a></li>
+								<li class="guest__name" data-path="twelve"><a href="#sergeev">Максим Сергеев</a></li>					
+								<li class="guest__name" data-path="thirteen"><a href="#kalitnikov">Иван Калитников</a></li>
+								<li class="guest__name" data-path="fourteen"><a href="#piotrovski">Пётр Пиотровский</a></li>
+								<li class="guest__name" data-path="fifteen"><a href="#polujan">Георгий Полуян</a></li>			
+							</ul>
+						</li>
+						<li class="guest__accordion-item">
+							<div class="guest__accordion-toc flex">
+								<h3 class="guest__accordion-title">Люди науки</h3>
+								<svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="21" cy="21" r="20" stroke="#A1A6B4" stroke-width="2"/>
+									<path d="M13 19L21 27L29 19" stroke="#A1A6B4" stroke-width="2" stroke-linecap="square"/>
+								</svg>
+							</div>
+							<ul class="guest__list list-reset flex">
+								<li class="guest__name" data-path="one"><a href="#denisov">Сергей Денисов</a></li>
+								<li class="guest__name" data-path="two"><a href="#vojnovski">Евгений Войновский</a></li>
+								<li class="guest__name" data-path="three"><a href="#sviridovski">Олег Свиридовский</a></li>
+								<li class="guest__name" data-path="four"><a href="#telman">Денис Тельман</a></li>								
+								<li class="guest__name" data-path="five"><a href="#mechnikov">Матвей Мечников</a></li>
+								<li class="guest__name presona-active" data-path="six"><a href="#martinova">Ольга Мартынова</a></li>
+								<li class="guest__name" data-path="seven"><a href="#kaupers">Владислав Кауперс</a></li>
+								<li class="guest__name" data-path="eight"><a href="#gorin">Юрий Горин</a></li>							
+								<li class="guest__name" data-path="nine"><a href="#prusino">Константин Прусино</a></li>
+								<li class="guest__name" data-path="ten"><a href="#mihalok">Дмитрий Михалок</a></li>
+								<li class="guest__name" data-path="eleven"><a href="#pozhitnikov">Михаил Пожитников</a></li>
+								<li class="guest__name" data-path="twelve"><a href="#sergeev">Максим Сергеев</a></li>					
+								<li class="guest__name" data-path="thirteen"><a href="#kalitnikov">Иван Калитников</a></li>
+								<li class="guest__name" data-path="fourteen"><a href="#piotrovski">Пётр Пиотровский</a></li>
+								<li class="guest__name" data-path="fifteen"><a href="#polujan">Георгий Полуян</a></li>			
+							</ul>
+						</li>
+						<li class="guest__accordion-item">
+							<div class="guest__accordion-toc flex ">
+								<h3 class="guest__accordion-title">Историки</h3>
+								<svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="21" cy="21" r="20" stroke="#A1A6B4" stroke-width="2"/>
+									<path d="M13 19L21 27L29 19" stroke="#A1A6B4" stroke-width="2" stroke-linecap="square"/>
+								</svg>
+							</div>
+							<ul class="guest__list list-reset flex">
+								<li class="guest__name" data-path="one"><a href="#denisov">Сергей Денисов</a></li>
+								<li class="guest__name" data-path="two"><a href="#vojnovski">Евгений Войновский</a></li>
+								<li class="guest__name" data-path="three"><a href="#sviridovski">Олег Свиридовский</a></li>
+								<li class="guest__name" data-path="four"><a href="#telman">Денис Тельман</a></li>								
+								<li class="guest__name" data-path="five"><a href="#mechnikov">Матвей Мечников</a></li>
+								<li class="guest__name presona-active" data-path="six"><a href="#martinova">Ольга Мартынова</a></li>
+								<li class="guest__name" data-path="seven"><a href="#kaupers">Владислав Кауперс</a></li>
+								<li class="guest__name" data-path="eight"><a href="#gorin">Юрий Горин</a></li>							
+								<li class="guest__name" data-path="nine"><a href="#prusino">Константин Прусино</a></li>
+								<li class="guest__name" data-path="ten"><a href="#mihalok">Дмитрий Михалок</a></li>
+								<li class="guest__name" data-path="eleven"><a href="#pozhitnikov">Михаил Пожитников</a></li>
+								<li class="guest__name" data-path="twelve"><a href="#sergeev">Максим Сергеев</a></li>					
+								<li class="guest__name" data-path="thirteen"><a href="#kalitnikov">Иван Калитников</a></li>
+								<li class="guest__name" data-path="fourteen"><a href="#piotrovski">Пётр Пиотровский</a></li>
+								<li class="guest__name" data-path="fifteen"><a href="#polujan">Георгий Полуян</a></li>			
+							</ul>
+						</li>
+						<li class="guest__accordion-item">
+							<div class="guest__accordion-toc flex">
+								<h3 class="guest__accordion-title">Филологи</h3>
+								<svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<circle cx="21" cy="21" r="20" stroke="#A1A6B4" stroke-width="2"/>
+									<path d="M13 19L21 27L29 19" stroke="#A1A6B4" stroke-width="2" stroke-linecap="square"/>
+								</svg>
+							</div>
+							<ul class="guest__list list-reset flex">
+								<li class="guest__name" data-path="one"><a href="#denisov">Сергей Денисов</a></li>
+								<li class="guest__name" data-path="two"><a href="#vojnovski">Евгений Войновский</a></li>
+								<li class="guest__name" data-path="three"><a href="#sviridovski">Олег Свиридовский</a></li>
+								<li class="guest__name" data-path="four"><a href="#telman">Денис Тельман</a></li>								
+								<li class="guest__name" data-path="five"><a href="#mechnikov">Матвей Мечников</a></li>
+								<li class="guest__name presona-active" data-path="six"><a href="#martinova">Ольга Мартынова</a></li>
+								<li class="guest__name" data-path="seven"><a href="#kaupers">Владислав Кауперс</a></li>
+								<li class="guest__name" data-path="eight"><a href="#gorin">Юрий Горин</a></li>							
+								<li class="guest__name" data-path="nine"><a href="#prusino">Константин Прусино</a></li>
+								<li class="guest__name" data-path="ten"><a href="#mihalok">Дмитрий Михалок</a></li>
+								<li class="guest__name" data-path="eleven"><a href="#pozhitnikov">Михаил Пожитников</a></li>
+								<li class="guest__name" data-path="twelve"><a href="#sergeev">Максим Сергеев</a></li>					
+								<li class="guest__name" data-path="thirteen"><a href="#kalitnikov">Иван Калитников</a></li>
+								<li class="guest__name" data-path="fourteen"><a href="#piotrovski">Пётр Пиотровский</a></li>
+								<li class="guest__name" data-path="fifteen"><a href="#polujan">Георгий Полуян</a></li>		
+							</ul>
+						</li>
+					</ul>            
+					<div class="guest__persona">
+						<ul class="guest__persona-list list-reset">
+							<li id="denisov" class="guest__persona-item" data-target="one">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a aria-label="инстаграм" href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a aria-label="фэйсбук" href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a aria-label="твиттер" href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+										</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a aria-label="Эфиры с гостем" href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="vojnovski" class="guest__persona-item" data-target="two">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="sviridovski" class="guest__persona-item" data-target="three">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="telman" class="guest__persona-item" data-target="four">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="mechnikov" class="guest__persona-item" data-target="five">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="martinova" class="guest__persona-item presona-active" data-target="six">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/OlgaMartinova-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/OlgaMartinova-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/OlgaMartinova-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/OlgaMartinova-1440.jpg">
+									<img src="img/OlgaMartinova.png" alt="Ольга Мартынова">
+								</picture>
+								<div class="guest__persona-social flex">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>									
+								</div>
+								<h3 class="guest__persona-name">
+									Ольга Мартынова
+								</h3>
+								<p class="guest__persona-desc">
+									Российский искусствовед, арт-критик, куратор выставок, дизайнер, кандидат культурологии. Арт-критик газеты &laquo;Коммерсантъ&raquo;. Ведёт активную блогерскую деятельность как куратор музея &laquo;Гараж&raquo;, коим является с&nbsp;2016&nbsp;года.
+								</p>
+								<a href="#" class="guest__persona-link">
+									Эфиры с гостем
+								</a>
+							</li>
+							<li id="kaupers" class="guest__persona-item" data-target="seven">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="gorin" class="guest__persona-item" data-target="eight">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="prusino" class="guest__persona-item" data-target="nine">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="mihalok" class="guest__persona-item" data-target="ten">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="pozhitnikov" class="guest__persona-item" data-target="eleven">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="sergeev" class="guest__persona-item" data-target="twelve">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="kalitnikov" class="guest__persona-item" data-target="thirteen">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="piotrovski" class="guest__persona-item" data-target="fourteen">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+							<li id="polujan" class="guest__persona-item" data-target="fifteen">
+								<picture class="guest__picture">
+									<source media="(max-width: 450px)" srcset="img/non-persona-320.jpg">
+									<source media="(max-width: 992px)" srcset="img/non-persona-768.jpg">
+									<source media="(max-width: 1130px)" srcset="img/non-persona-1024.jpg">
+									<source media="(min-width: 1131px)" srcset="img/non-persona-1440.jpg">
+									<img src="img/non-persona.png" alt="">
+								</picture>
+								<div class="guest__persona-social">
+									<a href="#" class="guest__social-link">
+										<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+										</svg>
+									</a>									
+									<a href="#" class="guest__social-link">
+										<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+											</svg>
+									</a>					
+								</div>
+								<h3 class="guest__persona-name">
+									Гость имярек
+								</h3>
+								<p class="guest__persona-desc">
+									Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Жаренные, строчка грамматики! Страну решила, мир что прямо речью всеми, это если инициал власти рукописи запятых подзаголовок оксмокс текстами приставка!
+								</p>
+								<a href="#" class="guest__persona-link">
+									"Эфиры с гостем"
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</section>
+		<!-- Плейлисты -->
+		<section class="playlist" id="playlist">
+			<div class="container playlist__container">
+				<div class="playlist__content flex">
+					<div class="playlist__radio-wrap flex">
+						<h2 class="playlist__title">Плейлисты</h2>
+						<p class="playlist__text">Жанр</p>
+						<div class="playlist__label-wrap flex">
+							<label class="playlist__label" for="radio-btn-1">
+								<input type="radio" name="radio-button" value="Постпанк" id="radio-btn-1" class="radio-input" checked>								
+								<span class="radio-span" tabindex="0"> 
+									<svg class="radio-span__svg" width="26" height="26" viewbox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="13" cy="13" r="12" stroke="#A1A6B4" stroke-width="2"/>
+									</svg>
+								</span>
+								<span class="radio-text">Постпанк</span>
+							</label>
+							<label class="playlist__label" for="radio-btn-2">
+								<input type="radio" name="radio-button" value="Хардрок" id="radio-btn-2" class="radio-input">								
+								<span class="radio-span" tabindex="0">
+									<svg class="radio-span__svg" width="26" height="26" viewbox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="13" cy="13" r="12" stroke="#A1A6B4" stroke-width="2"/>
+									</svg>
+								</span>
+								<span class="radio-text">Хардрок</span>
+							</label>
+							<label class="playlist__label" for="radio-btn-3">
+								<input type="radio" name="radio-button" value="Панк-рок" id="radio-btn-3" class="radio-input">								
+								<span class="radio-span" tabindex="0">
+									<svg class="radio-span__svg" width="26" height="26" viewbox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="13" cy="13" r="12" stroke="#A1A6B4" stroke-width="2"/>
+									</svg>
+								</span>
+								<span class="radio-text">Панк-рок</span>
+							</label>
+							<label class="playlist__label" for="radio-btn-4">
+								<input type="radio" name="radio-button" value="Рок" id="radio-btn-4" class="radio-input">								
+								<span class="radio-span" tabindex="0">
+									<svg class="radio-span__svg" width="26" height="26" viewbox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="13" cy="13" r="12" stroke="#A1A6B4" stroke-width="2"/>
+									</svg>
+								</span>
+								<span class="radio-text">Рок</span>
+							</label>
+							<label class="playlist__label" for="radio-btn-5">
+								<input type="radio" name="radio-button" value="Прогрессивный рок" id="radio-btn-5" class="radio-input">								
+								<span class="radio-span" tabindex="0">
+									<svg class="radio-span__svg" width="26" height="26" viewbox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="13" cy="13" r="12" stroke="#A1A6B4" stroke-width="2"/>
+									</svg>
+								</span>
+								<span class="radio-text">Прогрессивный рок</span>
+							</label>
+							<label class="playlist__label" for="radio-btn-6">
+								<input type="radio" name="radio-button" value="Электронная музыка" id="radio-btn-6" class="radio-input">								
+								<span class="radio-span" tabindex="0">
+									<svg class="radio-span__svg" width="26" height="26" viewbox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="13" cy="13" r="12" stroke="#A1A6B4" stroke-width="2"/>
+									</svg>
+								</span>
+								<span class="radio-text">Электронная музыка</span>
+							</label>
+							<label class="playlist__label" for="radio-btn-7">
+								<input type="radio" name="radio-button" value="Классическая музыка" id="radio-btn-7" class="radio-input">								
+								<span class="radio-span" tabindex="0">
+									<svg class="radio-span__svg" width="26" height="26" viewbox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="13" cy="13" r="12" stroke="#A1A6B4" stroke-width="2"/>
+									</svg>
+								</span>
+								<span class="radio-text">Классическая музыка</span>
+							</label>
+							<label class="playlist__label" for="radio-btn-8">
+								<input type="radio" name="radio-button" value="Звуки природы" id="radio-btn-8" class="radio-input">								
+								<span class="radio-span" tabindex="0">
+									<svg class="radio-span__svg" width="26" height="26" viewbox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<circle cx="13" cy="13" r="12" stroke="#A1A6B4" stroke-width="2"/>
+									</svg>
+								</span>
+								<span class="radio-text">Звуки природы и&nbsp;шум города</span>
+							</label>
+						</div>						
+					</div>
+					<div class="playlist__info-wrap">
+						<p class="playlist__desc">
+							Раздел &laquo;Плейлисты&raquo; может содержать информацию, не&nbsp;предназначенную для несовершеннолетних.
+						</p>
+						<small class="small">&copy;&nbsp;2021&nbsp;l W-Wave</small>
+						<img src="img/adult-18.png" alt="Ограничение по возрасту 18+">
+					</div>
+					<ul class="playlist__list list-reset flex">
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-1-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-1-1024.jpg">
+								<img src="img/album-1.png" alt="Альбом-1">
+								</picture>								
+							</div>													
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									Ploho
+								</h3>
+								<a href="#" class="playlist__link">3 последних альбома</a>
+							</article>
+							<img  class="playlist__image" src="img/rus.jpg" alt="Флаг России">
+						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-2-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-2-1024.jpg">
+								<img src="img/album-2.png" alt="Альбом-2">
+								</picture>								
+							</div>													
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									Molchat Doma
+								</h3>
+								<a href="#" class="playlist__link">Все песни</a>
+							</article>
+							<img  class="playlist__image" src="img/rus.jpg" alt="Флаг России">
+						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-3-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-3-1024.jpg">
+								<img src="img/album-3.png" alt="Альбом-3">
+								</picture>								
+							</div>													
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									Motorama
+								</h3>
+								<a href="#" class="playlist__link">Все синглы</a>
+							</article>
+							<img  class="playlist__image" src="img/rus.jpg" alt="Флаг России">						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-4-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-4-1024.jpg">
+								<img src="img/album-4.png" alt="Альбом-4">
+								</picture>								
+							</div>													
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									Human Tetris
+								</h3>
+								<a href="#" class="playlist__link">3 последних альбома</a>
+							</article>
+							<img  class="playlist__image" src="img/rus.jpg" alt="Флаг России">						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-5-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-5-1024.jpg">
+								<img src="img/album-5.png" alt="Альбом-5">
+								</picture>								
+							</div>													
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									Буерак
+								</h3>
+								<a href="#" class="playlist__link">Все EP</a>
+							</article>
+							<img  class="playlist__image" src="img/rus.jpg" alt="Флаг России">						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-6-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-6-1024.jpg">
+								<img src="img/album-6.png" alt="Альбом-6">
+								</picture>								
+							</div>													
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									Июльские Дни
+								</h3>
+								<a href="#" class="playlist__link">Альбом &laquo;Колокол&raquo;</a>
+							</article>
+							<img  class="playlist__image" src="img/rus.jpg" alt="Флаг России">						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-7-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-7-1024.jpg">
+								<img src="img/album-7.png" alt="Альбом-7">
+								</picture>								
+							</div>													
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									Joy Division
+								</h3>
+								<a href="#" class="playlist__link">Лучшее за всё время</a>
+							</article>
+							<img class="playlist__image" src="img/gb.jpg" alt="Флаг Великобритании">												
+						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-8-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-8-1024.jpg">
+								<img src="img/album-8.png" alt="Альбом-8">
+								</picture>
+							</div>							
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									The Cure
+								</h3>
+								<a href="#" class="playlist__link">Лучшее за всё время</a>
+							</article>
+							<img class="playlist__image" src="img/gb.jpg" alt="Флаг Великобритании">
+						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-9-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-9-1024.jpg">
+								<img src="img/album-9.png" alt="Альбом-9">
+								</picture>
+							</div>							
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									The Smiths
+								</h3>
+								<a href="#" class="playlist__link">Период 1984-1988</a>
+							</article>
+							<img class="playlist__image" src="img/gb.jpg" alt="Флаг Великобритании">
+						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-10-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-10-1024.jpg">
+								<img src="img/album-10.png" alt="Альбом-10">
+								</picture>
+							</div>							
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									New Order
+								</h3>
+								<a href="#" class="playlist__link">Хиты</a>
+							</article>
+							<img class="playlist__image" src="img/gb.jpg" alt="Флаг Великобритании">
+						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-11-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-11-1024.jpg">
+								<img src="img/album-11.png" alt="Альбом-11">
+								</picture>
+							</div>							
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									Bauhaus
+								</h3>
+								<a href="#" class="playlist__link">Все синглы</a>
+							</article>
+							<img class="playlist__image" src="img/gb.jpg" alt="Флаг Великобритании">
+						</li>
+						<li class="playlist__item">
+							<div class="playlist__picture">
+								<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/album-12-1440.jpg">
+								<source media="(max-width: 1130px)" srcset="img/album-12-1024.jpg">
+								<img src="img/album-12.png" alt="Альбом-12">
+								</picture>
+							</div>							
+							<article class="playlist__article">
+								<h3 class="playlist__subtitle">
+									Gang Of Four
+								</h3>
+								<a href="#" class="playlist__link">3 последних альбома</a>
+							</article>
+							<img class="playlist__image" src="img/gb.jpg" alt="Флаг Великобритании">
+						</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<!-- Продукция -->
+		<section class="product">
+			<div class="container product__container flex">
+				<div class="product__swiper">
+					<div class="swiper mySwiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide swiper-slide-1">
+								<picture>
+									<source media="(min-width: 1131px)" srcset="img/receiver-1440.png">
+									<source media="(min-width: 911px)" srcset="img/receiver-1024.png">
+									<source media="(min-width: 621px)" srcset="img/receiver-768.png">
+									<source media="(max-width: 620px)" srcset="img/receiver-320.png">
+									<img src="img/receiver-1440.jpg" alt="радиоприёмник">
+								</picture>
+							</div>
+							<div class="swiper-slide swiper-slide-2">
+								<picture>
+									<source media="(min-width: 1131px)" srcset="img/receiver-1440.png">
+									<source media="(min-width: 911px)" srcset="img/receiver-1024.png">
+									<source media="(min-width: 621px)" srcset="img/receiver-768.png">
+									<source media="(max-width: 620px)" srcset="img/receiver-320.png">
+									<img src="img/receiver-1440.jpg" alt="радиоприёмник">
+								</picture>
+							</div>
+							<div class="swiper-slide swiper-slide-3">
+								<picture>
+									<source media="(min-width: 1131px)" srcset="img/receiver-1440.png">
+									<source media="(min-width: 911px)" srcset="img/receiver-1024.png">
+									<source media="(min-width: 621px)" srcset="img/receiver-768.png">
+									<source media="(max-width: 620px)" srcset="img/receiver-320.png">
+									<img src="img/receiver-1440.jpg" alt="радиоприёмник">
+								</picture>
+							</div>
+						</div>
+						<div role="radio" aria-checked="true" class="swiper-pagination"></div>
+					</div>					
+					
+				</div>
+				<div class="product__content">
+					<h2 class="product__title">
+						Будь с&nbsp;нами на&nbsp;одной волне!
+					</h2>
+					<p class="product__desc product__desc_top">
+						Друзья, рады представить вам продукт нашего производства! Да-да, несмотря на&nbsp;то, что мы&nbsp;только начали свой путь радиовещателей, нам хочется, чтобы&nbsp;вы могли как следует нас расслышать :)
+					</p>
+					<p class="product__desc product__desc_bottom">
+						Итак, встречайте! Портативный радиоприёмник-&nbsp;колонка
+						<span class="product__desc-span">
+							W-Wave 1.0&nbsp;xm.
+						</span>
+						Тщательный подбор всех делатей, ручная сборка, качественный звук. Пока доступно только 60&nbsp;штук в&nbsp;3&nbsp;цветах, но&nbsp;мы&nbsp;активно трудимся над новыми партиями и&nbsp;дизайном. Спешите приобрести!
+					</p>
+					<p class="product__price">
+						2800 руб
+					</p>
+					<a aria-label="Купить на Яндекс.Маркете" href="#" class="product__link btn-reset flex" data-graph-path="order">
+						<svg class="product__link-svg" width="21" height="20" viewbox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<g clip-path="url(#clip0_21660_1180)">
+							<path d="M10.5 20C16.0228 20 20.5 15.5228 20.5 9.99998C20.5 4.47714 16.0228 0 10.5 0C4.97724 0 0.5 4.47714 0.5 9.99998C0.5 15.5228 4.97724 20 10.5 20Z" fill="#F0D288"/>
+							<path d="M17.4385 4.54391L13.7295 3.17676L8.3957 10.8637L8.92677 7.3751L6.02058 5.68219L0.67395 12.1141C0.924269 13.3858 1.4102 14.5718 2.08387 15.6239L5.27373 11.7711L4.09993 16.2962L7.73707 17.6271L13.1408 9.8464L11.9569 14.2958L14.9033 16.0179L20.558 10.3174C20.5592 10.2534 20.5599 10.1889 20.5599 10.1246C20.5599 8.78258 20.3017 7.50132 19.8329 6.32896L16.5482 9.6538L17.4385 4.54391Z" fill="#121723"/>
+							</g>
+							<defs>
+							<clippath id="clip0_21660_1180">
+							<rect x="0.5" width="20" height="20" rx="10" fill="white"/>
+							</clippath>
+							</defs>
+							</svg>
+							Купить на&nbsp;Яндекс.Маркет
+					</a>
+				</div>
+			</div>
+		</section>
+		<!-- О нас -->
+		<section id="about" class="about">
+			<div class="container about__container">
+				<div class="about__content">
+					<h2 class="about__title">
+						О нас
+					</h2>
+					<p class="about__desc">
+						Приём-приём! Как слышно? Мы&nbsp;уже в&nbsp;эфире? Отлично, поехали!
+					</p>
+					<p class="about__text">
+						Друзья, мы&nbsp;будем очень рады, если вы&nbsp;поможете стать нам лучше. Нам важен каждый слушатель, поэтому вы&nbsp;можете поделиться обратной связью о&nbsp;наших пeредачах, темах, подборках и&nbsp;вообще обо всём! Это можно сделать, либо написав нам в&nbsp;форме ниже, либо кликнув на&nbsp;наши соцсети в&nbsp;подвале сайта. Спасибо! Услышимся! :)
+					</p>
+				</div>
+				<ul class="about__list list-reset flex">
+					<li class="about__item">
+						<div class="about__picture">
+							<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/gutenberg-1440.jpg">
+								<source media="(min-width: 993px)" srcset="img/gutenberg-1024.jpg">
+								<source media="(min-width: 741px)" srcset="img/gutenberg-768.jpg">
+								<source media="(max-width: 740px)" srcset="img/gutenberg-320.jpg">
+								<img src="img/gutenberg.png" alt="Дмитрий Гутенберг" class="about__image">
+							</picture>
+						</div>
+						<article class="about__article">
+							<h3 class="about__subtitle">
+								Дмитрий Гутенберг
+							</h3>
+							<p class="about__desc-article">
+								Эксперт (ну, почти) по&nbsp;всем вопросам (почти).
+							</p>
+						</article>
+					</li>
+					<li class="about__item">
+						<div class="about__picture">
+							<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/vasilieva-1440.jpg">
+								<source media="(min-width: 993px)" srcset="img/vasilieva-1024.jpg">
+								<source media="(min-width: 741px)" srcset="img/vasilieva-768.jpg">
+								<source media="(max-width: 740px)" srcset="img/vasilieva-320.jpg">
+								<img src="img/vasilieva.png" alt="Анна Васильева" class="about__image">
+							</picture>
+						</div>
+						<article class="about__article">
+							<h3 class="about__subtitle">
+								Анна Васильева
+							</h3>
+							<p class="about__desc-article">
+								Как я&nbsp;здесь оказалась? А&nbsp;главное&nbsp;&mdash; зачем?
+							</p>
+						</article>
+					</li>
+					<li class="about__item">
+						<div class="about__picture">
+							<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/dmitrijevski-1440.jpg">
+								<source media="(min-width: 993px)" srcset="img/dmitrijevski-1024.jpg">
+								<source media="(min-width: 741px)" srcset="img/dmitrijevski-768.jpg">
+								<source media="(max-width: 740px)" srcset="img/dmitrijevski-320.jpg">
+								<img src="img/dmitrijevski.png" alt="Пётр Дмитриевский" class="about__image">
+							</picture>
+						</div>
+						<article class="about__article">
+							<h3 class="about__subtitle">
+								Пётр Дмитриевский
+							</h3>
+							<p class="about__desc-article">
+								Господа! Внимание!! Благодарю за&nbsp;внимание!!!
+							</p>
+						</article>
+					</li>
+					<li class="about__item">
+						<div class="about__picture">
+							<picture class="picture">
+								<source media="(min-width: 1131px)" srcset="img/fleganova-1440.jpg">
+								<source media="(min-width: 993px)" srcset="img/fleganova-1024.jpg">
+								<source media="(min-width: 741px)" srcset="img/fleganova-768.jpg">
+								<source media="(max-width: 740px)" srcset="img/fleganova-320.jpg">
+								<img src="img/fleganova.png" alt="" class="about__image">
+							</picture>
+						</div>
+						<article class="about__article">
+							<h3 class="about__subtitle">
+								Татьяна Флеганова
+							</h3>
+							<p class="about__desc-article">
+								Одна я&nbsp;в&nbsp;пальто стою красивая, а&nbsp;вокруг...
+							</p>
+						</article>
+					</li>
+				</ul>
+					<!-- отправка данных на почту -->
+				<div class="about__form-wrap validation2">
+					<form action="#" method="POST" id="form" class="about__form" enctype="multipart/form-data">
+						<div class="about__form-message">
+							<label for="message" class="about__label-message">
+							<textarea id="message" name="message" class="about__textarea" placeholder="Что скажете?"></textarea> 
+						</label>
+						</div> 
+						<div class="about__data-wrapper flex">
+							<div class="about__form-name">
+								<label for="input-name" class="about__label-name">
+								<input id="input-name" name="name" type="text" class="about__input-name" placeholder="Имя">
+							</label>
+							</div>
+							<div class="about__form-email">
+								<label for="input-email" class="about__label-email">
+								<input id="input-email" name="email" type="text" class="about__input-email" placeholder="E-mail"> 
+							</label>
+							</div>
+						</div>						
+						<button type="submit" class="about__form-btn btn-reset">Отправить</button>
+						<div class="about__checkbox-wrap">
+							<label for="checkbox" class="about__label-checkbox">
+							<input id="checkbox" type="checkbox" name="agreement" class="about__checkbox" checked required> 
+							<span class="about__span-checkbox"></span>
+							<span class="about__span-agreement">
+								Согласен на обработку персональных данных
+							</span>
+						</label> 
+						</div>
+					</form>
+				</div>
 
-		
+			</div>
+		</section>
+		<!-- Модальные окна -->
+		<div class="graph-modal"> <!-- Сюда помещаются все модальные окна на сайте -->
 
+			<!-- Форма входа -->
+			<div class="graph-modal__container" role="dialog" aria-modal="true" data-graph-target="enter"> <!-- Сюда помещается конкретное модальное окно -->				
+				<div class="header__enter validation graph-modal__content"> <!-- Здесь контент модального окна -->					
+					<button aria-label="Закрыть" class="header__btn-closed graph-modal__close js-modal-close btn-reset" type="button" data-bs-dismiss="modal">
+						<svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="21" cy="21" r="19.5" stroke="#A1A6B4" stroke-width="3" />
+							<path d="M29.6777 12L12 29.6777M29.6777 29.6777L12 12" stroke="#A1A6B4" stroke-width="3" />
+						</svg>
+					</button>
+					<h2 class="header__subtite">
+						Вход
+					</h2>
+					<div class="header__span">
+						<p class="header__text-enter">Если у&nbsp;вас ещё нет аккаунта,</p>
+						<a aria-label="зарегистрируйтесь" href="#" class="header__link-enter">зарегистрируйтесь</a>
+					</div>				
+						<form action="https://jsonplaceholder.typicode.com/posts/" method="post" class="header__form-enter">
+							<div class="header__form-row-1">
+								<label>
+									<input type="text" name="login" value="" placeholder="Логин" class="header__input-login input-reset">
+								</label>
+							</div>
+							<div class="header__form-row-2">
+								<label>
+									<input name="password" type="password" class="header__input-password input-reset" placeholder="Пароль">
+								</label>
+							</div>
+							<button class="header__btn-form btn-reset" type="submit" value="Войти">Войти</button>
+						</form>
+						<div class="header__social-wrap">
+							<p class="header__social-text">
+								Войти с&nbsp;помощью:
+							</p>
+							<span class="header__social-span">
+								<a aria-label="фэйсбук" href="#" class="header__social-link header__social-link_fb">
+									<svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="M26.3 36.6666V23.7666H30.6204L31.2666 18.7518H26.3V15.5518C26.3 14.1 26.7037 13.1092 28.7852 13.1092H31.4407V8.62405C30.1552 8.48765 28.8631 8.42151 27.5704 8.42591C23.7426 8.42591 21.1222 10.7629 21.1222 15.0555V18.7518H16.7926V23.7666H21.1222V36.6666H5.18516C4.69402 36.6666 4.223 36.4715 3.87571 36.1243C3.52842 35.777 3.33331 35.3059 3.33331 34.8148V5.18516C3.33331 4.69402 3.52842 4.223 3.87571 3.87571C4.223 3.52842 4.69402 3.33331 5.18516 3.33331H34.8148C35.3059 3.33331 35.777 3.52842 36.1243 3.87571C36.4715 4.223 36.6666 4.69402 36.6666 5.18516V34.8148C36.6666 35.3059 36.4715 35.777 36.1243 36.1243C35.777 36.4715 35.3059 36.6666 34.8148 36.6666H26.3Z"
+											fill="#A1A6B4" />
+									</svg>
+								</a>
+								<a aria-label="в контакте" href="#" class="header__social-link">
+									<svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect x="3" y="3" width="33.33" height="33.33" rx="2" fill="#A1A6B4" />
+										<path
+											d="M20.7487 26.332H19.3854C19.3854 26.332 16.3772 26.5131 13.7277 23.7545C10.8383 20.7461 8.28686 14.7765 8.28686 14.7765C8.28686 14.7765 8.13973 14.3853 8.29964 14.1959C8.47938 13.9831 8.96857 13.9695 8.96857 13.9695L12.2278 13.9482C12.2278 13.9482 12.5349 13.9994 12.7547 14.1608C12.9359 14.294 13.0373 14.543 13.0373 14.543C13.0373 14.543 13.5641 15.8752 14.2617 17.0804C15.6233 19.4331 16.2575 19.9477 16.7198 19.6957C17.3934 19.3283 17.1914 16.3698 17.1914 16.3698C17.1914 16.3698 17.2037 15.296 16.8522 14.8177C16.58 14.4475 16.0667 14.3391 15.84 14.3089C15.6566 14.2844 15.9576 13.8587 16.3478 13.6676C16.9343 13.3803 17.9699 13.3641 19.1938 13.3765C20.1473 13.3863 20.4219 13.4458 20.7946 13.5357C21.6597 13.7446 21.6327 14.4138 21.5745 15.8578L21.5745 15.8579C21.5571 16.2893 21.537 16.7899 21.537 17.3681C21.537 17.4983 21.5332 17.6371 21.5293 17.7798V17.7799C21.509 18.5193 21.4858 19.3656 21.9726 19.6802C22.2223 19.8415 22.8331 19.7042 24.3603 17.111C25.084 15.8819 25.627 14.4368 25.627 14.4368C25.627 14.4368 25.7453 14.1791 25.9297 14.0688C26.1181 13.9561 26.3726 13.9907 26.3726 13.9907L29.8023 13.9695C29.8023 13.9695 30.8329 13.8466 30.9997 14.3118C31.1747 14.8001 30.6146 15.9402 29.2135 17.8077C27.8827 19.5813 27.236 20.2332 27.2968 20.8106C27.3401 21.2221 27.7429 21.5959 28.5137 22.311L28.5668 22.3603C30.2548 23.9272 30.7051 24.7501 30.8121 24.9456C30.8207 24.9615 30.8271 24.9732 30.8318 24.9809C31.5873 26.2337 29.9939 26.332 29.9939 26.332L26.9477 26.3746C26.9477 26.3746 26.2931 26.5041 25.4317 25.9125C24.9813 25.6033 24.5409 25.0985 24.1214 24.6174L24.1214 24.6174C23.4798 23.8818 22.8868 23.2019 22.3806 23.3624C21.5317 23.6319 21.5583 25.4613 21.5583 25.4613C21.5583 25.4613 21.5645 25.852 21.371 26.0601C21.1605 26.2866 20.7487 26.332 20.7487 26.332Z"
+											fill="#121723" />
+									</svg>
+								</a>
+								<a aria-label="гугл" href="#" class="header__social-link">
+									<svg width="40" height="40" viewbox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<rect x="3" y="3" width="33.33" height="33.33" rx="2" fill="#A1A6B4" />
+										<path
+											d="M23.9404 14.9923C23.1518 14.2694 21.7687 13.4043 19.7184 13.4043C16.8309 13.4043 14.3802 15.2649 13.4945 17.8364C13.2761 18.5001 13.1427 19.2111 13.1427 19.9459C13.1427 20.6806 13.2761 21.3917 13.5066 22.0553C14.3802 24.6269 16.8309 26.4874 19.7184 26.4874C21.3441 26.4874 22.5816 26.0489 23.5036 25.4208C24.9595 24.4254 25.6147 22.9441 25.7359 21.9605H19.7184V18.0024H29.9701C30.1278 18.666 30.2007 19.3059 30.2007 20.1829C30.2007 23.4299 29.0116 26.1675 26.9492 28.028C25.1414 29.6634 22.6665 30.6115 19.7184 30.6115C15.4478 30.6115 11.7596 28.2176 9.96405 24.7335C9.22401 23.2877 8.79938 21.6642 8.79938 19.9459C8.79938 18.2275 9.22401 16.604 9.96405 15.1582C11.7596 11.6741 15.4478 9.28027 19.7184 9.28027C22.6665 9.28027 25.1294 10.335 27.022 12.0533L23.9404 14.9923Z"
+											fill="#121723" />
+									</svg>
+								</a>
+							</span>
+						</div>
+				</div>
+			</div>
+
+			<!-- Продукция -->
+			<div class="graph-modal__container" role="dialog" aria-modal="true" data-graph-target="order">
+				<div class="product-modal graph-modal__content"> <!-- Здесь контент модального окна -->					
+					<button aria-label="Закрыть" class="product-modal__btn-closed graph-modal__close js-modal-close btn-reset" type="button" data-bs-dismiss="modal">
+						<svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<circle cx="21" cy="21" r="19.5" stroke="#A1A6B4" stroke-width="3" />
+							<path d="M29.6777 12L12 29.6777M29.6777 29.6777L12 12" stroke="#A1A6B4" stroke-width="3" />
+						</svg>
+					</button>
+					<h2 class="product-modal__subtite">
+						Отлично!
+					</h2>
+					<div class="product-modal__wrap">
+						<p class="product-modal__text">Радиоприёмник забронирован</p>
+						<a href="https://market.yandex.ru/" target="_blank" class="product-modal__link">на&nbsp;Яндекс.Маркете</a>
+					</div>				
+					<div class="product-modal__order flex">
+						<img class="product-modal__image product-modal__image_1" src="img/radio-red.png" alt="красный радиоприёмник">
+						<img class="product-modal__image product-modal__image_2" src="img/radio-blue.png" alt="синий радиоприёмник">
+						<img class="product-modal__image product-modal__image_3" src="img/radio-green.png" alt="зелёный радиоприёмник">
+					</div>
+					<div class="product-modal__booking">
+						<p class="product-modal__booking-text">
+							Номер вашей брони:
+						</p>
+						<span class="product-modal__booking-span">
+							3574
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>	
 	</main>
-	<script src="js/bootstrap.bundle.min.js"></script>
+	<!-- footer -->
+
+	<footer class="footer">
+		<div class="footer__row footer__row_top flex">
+			<div class="container footer-container flex">
+				<div class="footer__col">
+					<img src="img/logo-footer.png" alt="Логотип W-Wave" class="footer__logo">
+					<div class="footer__social flex">
+						<a aria-label="ютуб" href="#" class="footer__social-link">
+							<svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M21.543 6.498C22 8.28 22 12 22 12C22 12 22 15.72 21.543 17.502C21.289 18.487 20.546 19.262 19.605 19.524C17.896 20 12 20 12 20C12 20 6.107 20 4.395 19.524C3.45 19.258 2.708 18.484 2.457 17.502C2 15.72 2 12 2 12C2 12 2 8.28 2.457 6.498C2.711 5.513 3.454 4.738 4.395 4.476C6.107 4 12 4 12 4C12 4 17.896 4 19.605 4.476C20.55 4.742 21.292 5.516 21.543 6.498ZM10 15.5L16 12L10 8.5V15.5Z" fill="#A1A6B4"/>
+								</svg>
+						</a>
+						<a aria-label="инстаграм" href="#" class="footer__social-link">
+							<svg class="insta" width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M10 0C12.717 0 13.056 0.00999994 14.122 0.0599999C15.187 0.11 15.912 0.277 16.55 0.525C17.21 0.779 17.766 1.123 18.322 1.678C18.8305 2.1779 19.224 2.78259 19.475 3.45C19.722 4.087 19.89 4.813 19.94 5.878C19.987 6.944 20 7.283 20 10C20 12.717 19.99 13.056 19.94 14.122C19.89 15.187 19.722 15.912 19.475 16.55C19.2247 17.2178 18.8311 17.8226 18.322 18.322C17.822 18.8303 17.2173 19.2238 16.55 19.475C15.913 19.722 15.187 19.89 14.122 19.94C13.056 19.987 12.717 20 10 20C7.283 20 6.944 19.99 5.878 19.94C4.813 19.89 4.088 19.722 3.45 19.475C2.78233 19.2245 2.17753 18.8309 1.678 18.322C1.16941 17.8222 0.775931 17.2175 0.525 16.55C0.277 15.913 0.11 15.187 0.0599999 14.122C0.0129999 13.056 0 12.717 0 10C0 7.283 0.00999994 6.944 0.0599999 5.878C0.11 4.812 0.277 4.088 0.525 3.45C0.775236 2.78218 1.1688 2.17732 1.678 1.678C2.17767 1.16923 2.78243 0.775729 3.45 0.525C4.088 0.277 4.812 0.11 5.878 0.0599999C6.944 0.0129999 7.283 0 10 0ZM10 5C8.67392 5 7.40215 5.52678 6.46447 6.46447C5.52678 7.40215 5 8.67392 5 10C5 11.3261 5.52678 12.5979 6.46447 13.5355C7.40215 14.4732 8.67392 15 10 15C11.3261 15 12.5979 14.4732 13.5355 13.5355C14.4732 12.5979 15 11.3261 15 10C15 8.67392 14.4732 7.40215 13.5355 6.46447C12.5979 5.52678 11.3261 5 10 5ZM16.5 4.75C16.5 4.41848 16.3683 4.10054 16.1339 3.86612C15.8995 3.6317 15.5815 3.5 15.25 3.5C14.9185 3.5 14.6005 3.6317 14.3661 3.86612C14.1317 4.10054 14 4.41848 14 4.75C14 5.08152 14.1317 5.39946 14.3661 5.63388C14.6005 5.8683 14.9185 6 15.25 6C15.5815 6 15.8995 5.8683 16.1339 5.63388C16.3683 5.39946 16.5 5.08152 16.5 4.75ZM10 7C10.7956 7 11.5587 7.31607 12.1213 7.87868C12.6839 8.44129 13 9.20435 13 10C13 10.7956 12.6839 11.5587 12.1213 12.1213C11.5587 12.6839 10.7956 13 10 13C9.20435 13 8.44129 12.6839 7.87868 12.1213C7.31607 11.5587 7 10.7956 7 10C7 9.20435 7.31607 8.44129 7.87868 7.87868C8.44129 7.31607 9.20435 7 10 7Z" fill="#A1A6B4"/>
+							</svg>
+						</a>									
+						<a aria-label="фэйсбук" href="#" class="footer__social-link">
+							<svg width="20" height="20" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M13.78 20V12.26H16.3722L16.76 9.25111H13.78V7.33111C13.78 6.46 14.0222 5.86556 15.2711 5.86556H16.8644V3.17444C16.0931 3.09261 15.3179 3.05292 14.5422 3.05556C12.2456 3.05556 10.6733 4.45778 10.6733 7.03333V9.25111H8.07556V12.26H10.6733V20H1.11111C0.816426 20 0.533811 19.8829 0.325437 19.6746C0.117063 19.4662 0 19.1836 0 18.8889V1.11111C0 0.816426 0.117063 0.533811 0.325437 0.325437C0.533811 0.117063 0.816426 0 1.11111 0H18.8889C19.1836 0 19.4662 0.117063 19.6746 0.325437C19.8829 0.533811 20 0.816426 20 1.11111V18.8889C20 19.1836 19.8829 19.4662 19.6746 19.6746C19.4662 19.8829 19.1836 20 18.8889 20H13.78Z" fill="#A1A6B4"/>
+							</svg>
+						</a>									
+						<a aria-label="твиттер" href="#" class="footer__social-link">
+							<svg class="twitter" width="22" height="18" viewbox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M21.1621 2.65593C20.3986 2.99362 19.589 3.2154 18.7601 3.31393C19.6338 2.79136 20.2878 1.96894 20.6001 0.999927C19.7801 1.48793 18.8811 1.82993 17.9441 2.01493C17.3147 1.34151 16.4804 0.89489 15.571 0.744511C14.6616 0.594133 13.728 0.748418 12.9153 1.18338C12.1026 1.61834 11.4564 2.30961 11.0772 3.14972C10.6979 3.98983 10.6068 4.93171 10.8181 5.82893C9.15516 5.74558 7.52838 5.31345 6.04334 4.56059C4.55829 3.80773 3.24818 2.75097 2.19805 1.45893C1.82634 2.09738 1.63101 2.82315 1.63205 3.56193C1.63205 5.01193 2.37005 6.29293 3.49205 7.04293C2.82806 7.02202 2.17869 6.84271 1.59805 6.51993V6.57193C1.59825 7.53763 1.93242 8.47354 2.5439 9.22099C3.15538 9.96843 4.00653 10.4814 4.95305 10.6729C4.33667 10.84 3.69036 10.8646 3.06305 10.7449C3.32992 11.5762 3.85006 12.3031 4.55064 12.824C5.25123 13.3449 6.09718 13.6337 6.97005 13.6499C6.10253 14.3313 5.10923 14.8349 4.04693 15.1321C2.98464 15.4293 1.87418 15.5142 0.779053 15.3819C2.69075 16.6114 4.91615 17.264 7.18905 17.2619C14.8821 17.2619 19.0891 10.8889 19.0891 5.36193C19.0891 5.18193 19.0841 4.99993 19.0761 4.82193C19.8949 4.23009 20.6017 3.49695 21.1631 2.65693L21.1621 2.65593Z" fill="#A1A6B4"/>
+							</svg>
+						</a>			
+					</div>
+				</div>
+				<ul class="footer__list list-reset flex">
+					<li class="footer__item">
+						<a href="#podcast" class="footer__link">Подкасты</a>
+					</li>
+					<li class="footer__item footer__item_col-2">
+						<a href="#playlist" class="footer__link">Плейлисты</a>						
+					</li>
+					<li class="footer__item footer__item_col-3">
+						<a href="#" class="footer__link">Новости</a>					
+					</li>
+					<li class="footer__item">
+						<a href="#broadcast" class="footer__link">Передачи</a>
+					</li>
+					<li class="footer__item footer__item_col-2"> 
+						<a href="#" class="footer__link">Сетка</a>				
+					</li>
+					<li class="footer__item footer__item_col-3"> 
+						<a href="#" class="footer__link">Блоги</a>					
+					</li>
+					<li class="footer__item">
+						<a href="#guest" class="footer__link">Гости</a>
+					</li>
+					<li class="footer__item footer__item_col-2">
+						<a href="#about" class="footer__link">О нас</a>
+					</li>
+					<li class="footer__item footer__item_col-3">
+						<a href="#" class="footer__link">Топы</a>
+					</li>
+				</ul>
+			</div>							
+		</div>
+		<div class="footer__row footer__row_bottom flex">
+			<small class="footer__small">
+				W-WAVE <span class="reg">&reg;</span> 2021
+			</small>
+		</div>
+	</footer>
+
+	<script src="js/just-validate.production.min.js"></script>
+	<script src="js/graph-modal.min.js"></script>
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/choices.min.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/swiper-bundle.min.js"></script>
 	<script src="js/index.js"></script>
 </body>
 </html>
