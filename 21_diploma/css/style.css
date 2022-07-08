@@ -59,7 +59,7 @@ img {
   --promo-shade-color: #bb973e;
   --blue-color: #006e7b;
   --green-color: #1d6c4e;
-  --gap: 30px; /* устанавливаем расстояние между элементами */
+  --gap: 30px; /* устанавливаем расстояние между элементами */ 
 }
 
 body {  
@@ -71,7 +71,7 @@ a,
 label {
   color: inherit;
   text-decoration: none;
-  cursor: pointer;
+  /* cursor: pointer;  - не нужно*/
 }
 
 .reset {
@@ -167,19 +167,15 @@ label {
   width: 16.666%;
 }
 
-.header__list {
-  justify-content: space-between;  
-}
-
-.header__item_top {
+.header__item_top {  
   font-size: 20px;
   line-height: 20px;
   color: var(--black-color);
 }
 
-/* .header__item_net {
-  display: none;
-} */
+.header__item_top:not(:last-child) {
+  margin-right: auto;
+}
 
 .header__ether {
   display: none;
@@ -232,6 +228,10 @@ label {
   font-size: 16px;
   line-height: 16px;
   color: var(--black-color);
+}
+
+.header__item_bottom:not(:last-child) {
+  margin-right: auto;
 }
 
 .header__link {
@@ -1173,9 +1173,9 @@ label {
 .guest__persona-item { 
   display: none;
   /* opacity: 0; - если поставить opasity вместо display, фокус на табах не работает*/
-  transform: translateX(50px);
+  /* transform: translateX(50px); - если есть opasity */ 
   position: absolute;  /* Ставит все спрятанные карточки гостей друг за другом по оси Z */
-  /* transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); - есди есть opasity */
+  /* transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); - если есть opasity */
 }
 
 .presona-active {
@@ -1886,7 +1886,7 @@ label {
 
 .about__distribution-wrap {
   position: absolute;
-  width: 350px;
+  /* width: 350px; */
   height: 164px;
   left: 500px;
   bottom: 44px;
