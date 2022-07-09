@@ -460,7 +460,7 @@
     flex-direction: column;
     justify-content: center;
 
-  }
+  } 
   .footer__list {
     width: 58%;
   }
@@ -796,7 +796,7 @@
     padding-left: 0;
   }
   .footer__item {
-    width: 173px;
+    /* width: 173px; */
     margin-bottom: 30px;
   }
   .footer__row_bottom {
@@ -863,7 +863,7 @@
     background-image: url("../img/spiral-5.png");
     background-repeat: no-repeat;
     background-position: 32px 32%;
-  }
+  }  
   .about__container {
     padding-top: 54px;
     padding-left: 32px;
@@ -885,7 +885,7 @@
   }
   .about__desc {
     font-size: 14px;
-  }
+  } 
   .footer__row_top {
     padding-top: 54px;
     padding-bottom: 54px;
@@ -894,9 +894,9 @@
     padding-left: 32px;
     padding-right: 32px;
   }
-  .footer__item {
-    width: 168px;
-  } 
+  /* .footer__item {
+    width: 60%;
+  }  */
   .about__distribution-wrap {
     left: 320px;
   }
@@ -1247,6 +1247,9 @@
   .about__distribution-btn {
     background-color: var(--black-color);
   }
+  .footer__list {
+    column-gap: 125px;
+  } 
 }
 
 @media (max-width: 450px) {
@@ -1490,8 +1493,7 @@
   .podcast__title {
     font-size: 24px;
     margin-bottom: 19px;
-  }
- 
+  } 
   .podcast__item:nth-child(n+5) {
     display: none;
   } 
@@ -1854,9 +1856,6 @@
     font-size: 24px;
     line-height: 100%;
   } 
-  .about {
-    overflow: hidden; 
-   }  /* Прячет содержимое слайдера за пределами экрана, когда весь его контент открыт */
   .about__container {
     padding-top: 55px;
     padding-right: 28px;
