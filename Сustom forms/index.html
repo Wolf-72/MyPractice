@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/choices.min.css">  
+  <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css"/>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+  <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js"></script>
+  <title>Custom forms</title>
+</head>
+<body>
+  <div class="container">
+    <div class="checkbox">
+      <h3 class="checkbox__title">Категории:</h3>
+      <label class="checkbox__label">
+        <input type="checkbox" name="check" class="checkbox__input">
+          Динозавры
+        <span class="checkbox__span"></span>
+      </label>
+      <label class="checkbox__label">
+        <input type="checkbox" name="check" class="checkbox__input">
+          Медведи
+        <span class="checkbox__span"></span>
+      </label>
+      <label class="checkbox__label">
+        <input type="checkbox" name="check" class="checkbox__input">
+          Косули
+        <span class="checkbox__span"></span>
+      </label>
+      <label class="checkbox__label">
+        <input type="checkbox" name="check" class="checkbox__input">
+          Лисы
+        <span class="checkbox__span"></span>
+      </label>
+      <label class="checkbox__label">
+        <input type="checkbox" name="check" class="checkbox__input">
+          Волки
+        <span class="checkbox__span"></span>
+      </label>
+      <label class="checkbox__label">
+        <input type="checkbox" name="check" class="checkbox__input">
+          Олени и лоси
+        <span class="checkbox__span"></span>
+      </label>
+    </div>
+    
+    <div class="select">
+      <select name="material" id="" class="select__content">
+        <option value="Материал">Материал</option>
+        <option value="Древесина">Древесина</option>
+        <option value="Металл">Металл</option>
+        <option value="Камень">Камень</option>
+        <option value="Пластик">Пластик</option>
+        <option value="Композитный">Композитный</option>
+        <option value="Гипс">Гипс</option>
+      </select>
+    </div>
+
+    <div id="map" class="map"></div>
+
+    <div class="tooltip-container">
+      <p class="tooltip-container__desc">
+        Следует отметить, что социально-экономическое развитие способствует повышению качества переосмысления внешнеэкономических политик.
+      </p>
+      <div role="tooltip" class="info" tabindex="0" data-tippy-content="Глава 2, страница 176"></div>      
+    </div>  
+
+    <div class="tooltip-2">
+      <p class="tooltip-2__desc">
+        Следует отметить, что социально-экономическое развитие способствует повышению качества переосмысления внешнеэкономических политик.
+      </p>
+      <div role="tooltip" class="marker" tabindex="0"></div>
+      <div class="popup"></div>
+    </div>  
+
+    <div class="scrollbar" data-simplebar>
+      Сложно сказать, почему многие известные личности представлены в&nbsp;исключительно положительном свете. Лишь активно развивающиеся страны третьего мира будут объективно рассмотрены соответствующими инстанциями. Мы&nbsp;вынуждены отталкиваться от&nbsp;того, что высокотехнологичная концепция общественного уклада представляет собой интересный эксперимент проверки глубокомысленных рассуждений. Имеется спорная точка зрения, гласящая примерно следующее: непосредственные участники технического прогресса освещают чрезвычайно интересные особенности картины в&nbsp;целом, однако конкретные выводы, разумеется, обнародованы. Значимость этих проблем настолько очевидна, что социально-экономическое развитие, а&nbsp;также свежий взгляд на&nbsp;привычные вещи&nbsp;&mdash; безусловно открывает новые горизонты для первоочередных требований.
+    </div>
+    
+    <div class="validation">
+      <form action="#" class="form" autocomplete="off">
+          <!-- Всё нужно по-отдельности обернуть в див для позиционирования: -->
+        <div class="row-1">
+          <label>
+            <input type="text" placeholder="Имя*" name="name" id="name">
+          </label>
+        </div>
+        <div class="row-2">
+          <label>
+            <input name="tel" type="tel" placeholder="Телефон*" id="tel">
+          </label>
+        </div>
+        <div class="row-3">
+          <label>
+            <input type="email" placeholder="Email*" name="email" id="email">
+          </label>
+        </div>       
+        <div class="btn-container">
+          <button class="form-btn" >Заказать</button>  
+        </div>        
+      </form>
+    </div>
+
+  </div>
+
+  <script src="js/inputmask.min.js"></script>
+  <script src="js/choices.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

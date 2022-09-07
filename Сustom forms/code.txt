@@ -1,0 +1,43 @@
+
+
+
+
+<div class="choices" data-type="select-one" tabindex="0" role="listbox" aria-haspopup="true" aria-expanded="false">
+	<div class="choices__inner">
+		<select name="material" id="" class="select__content choices__input" hidden="" tabindex="-1" data-choice="active">
+			<option value="Материал" data-custom-properties="[object Object]">
+				Материал
+			</option>
+		</select>
+		<div class="choices__list choices__list--single">
+			<div class="choices__item choices__item--selectable" data-item="" data-id="1" data-value="Материал" data-custom-properties="[object Object]" aria-selected="true">
+				Материал
+			</div>
+		</div>
+	</div>
+	<div class="choices__list choices__list--dropdown" aria-expanded="false">
+		<div class="choices__list" role="listbox">
+			<div id="choices--material-b3-item-choice-1" class="choices__item choices__item--choice choices__item--selectable is-highlighted" role="option" data-choice="" data-id="1" data-value="Гипс" data-select-text="Press to select" data-choice-selectable="" aria-selected="true">
+				Гипс
+			</div>
+			<div id="choices--material-b3-item-choice-2" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="2" data-value="Древесина" data-select-text="Press to select" data-choice-selectable="">
+				Древесина
+			</div>
+			<div id="choices--material-b3-item-choice-3" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="3" data-value="Камень" data-select-text="Press to select" data-choice-selectable="">
+				Камень
+			</div>
+			<div id="choices--material-b3-item-choice-4" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="4" data-value="Композитный" data-select-text="Press to select" data-choice-selectable="">
+				Композитный
+			</div>
+			<div id="choices--material-b3-item-choice-5" class="choices__item choices__item--choice is-selected choices__item--selectable" role="option" data-choice="" data-id="5" data-value="Материал" data-select-text="Press to select" data-choice-selectable="">
+				Материал
+			</div>
+			<div id="choices--material-b3-item-choice-6" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="6" data-value="Металл" data-select-text="Press to select" data-choice-selectable="">
+				Металл
+			</div><
+			div id="choices--material-b3-item-choice-7" class="choices__item choices__item--choice choices__item--selectable" role="option" data-choice="" data-id="7" data-value="Пластик" data-select-text="Press to select" data-choice-selectable="">
+				Пластик
+			</div>
+		</div>
+	</div>
+</div>
